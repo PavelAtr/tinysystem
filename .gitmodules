@@ -1,0 +1,3 @@
+[submodule "sources"]
+	path = sources
+	url = http://www.tinyware.ru:8080/sources
