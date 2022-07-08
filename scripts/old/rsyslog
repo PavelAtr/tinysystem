@@ -1,0 +1,16 @@
+clear_flags
+SOURCE=sources/rsyslog-8.2102.0
+echo "Building $SOURCE ..." >> $LOG
+
+OLDPATH=$PATH
+export PATH="$DESTDIR/$PREFIX/bin:$PATH"
+export CFLAGS="$CFLAGS -include bthread.h -D__USE_GNU -I$DESTDIR/$PREFIX/include/libfastjson"
+export LDFLAGS="$LDFLAGS -lbthread"
+cd $CWD/$SOURCE
+./configure --prefix=$PREFIX --host=$TARGET \
+--enable-libsystemd=no \
+--with-sysroot=$DESTDIR
+make clean || true
+make -j $NUMJOB
+make install
+export PATH=$OLDPATH

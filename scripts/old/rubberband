@@ -1,0 +1,12 @@
+clear_flags
+SOURCE=sources/rubberband-1.9.0
+echo "Building $SOURCE ..." >> $LOG
+
+export LIBDIR=lib
+cd $CWD/$SOURCE
+./configure --prefix=$PREFIX --build=$BUILD --host=$TARGET
+make clean || true
+make -j $NUMJOB
+make install
+unset LIBDIR
+

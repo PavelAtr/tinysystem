@@ -1,0 +1,30 @@
+clear_flags
+SOURCE=sources/guitarix-0.42.1+dfsg1
+echo "Building $SOURCE ..." >> $LOG
+
+cd $CWD/$SOURCE
+
+export CFLAGS="$CFLAGS -DUSE_BTHREAD"
+export CXXFLAGS=$CFLAGS
+export CPPFLAGS=$CXXFLAGS
+export LDFLAGS="$LDFLAGS -lbthread"
+
+[ "$TARGET" == "x86_64-linux-android" ] && LDPNG=ld
+[ "$TARGET" == "aarch64-linux-android" ] && LDPNG=aarch64-linux-gnu-ld
+
+export CFLAGS="$CFLAGS -I$DESTDIR/$PREFIX/include/boost_dist -include bthread.h"
+export CXXFLAGS=$CFLAGS
+export LDFLAGS="$LDFLAGS -lbthread -lboost_iostreams"
+
+sudo rm /usr/bin/ld-png || true
+sudo ln -s /usr/bin/$LDPNG /usr/bin/ld-png
+
+TMPDIR=/tmp
+WAF=./waf
+$WAF clean || true
+rm .lock-waf* || true
+$WAF configure --prefix=$PREFIX --libdir=$PREFIX/lib \
+    --lv2dir=$PREFIX/lib/lv2 --disable-sse
+$WAF -v build --destdir=$TMPDIR
+$WAF -v install --destdir=$DESTDIR
+

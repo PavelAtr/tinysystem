@@ -1,0 +1,12 @@
+clear_flags
+SOURCE=sources/libxfce4ui-4.16.0
+echo "Building $SOURCE ..." >> $LOG
+
+export CFLAGS="$CFLAGS -I$DESTDIR/$PREFIX/include/gtk-3.0"
+cd $CWD/$SOURCE
+./configure --prefix=$PREFIX --host=$TARGET \
+--enable-introspection=no
+make clean || true
+make -j $NUMJOB
+make install
+

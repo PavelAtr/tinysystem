@@ -1,0 +1,6 @@
+if [ ! -z "${LIBMD}" ]
+then
+    SOURCE=sources/libmd-1.0.3
+    echo "Building $SOURCE ..." >> $LOG
+    . $CWD/scripts/libmd; package_make libmd 1.0.3 tw1
+fi

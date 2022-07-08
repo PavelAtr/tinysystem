@@ -1,0 +1,7 @@
+clear_flags
+SOURCE=sources/mmaptest
+echo "Building $SOURCE ..." >> $LOG
+cd $CWD/$SOURCE
+
+make
+

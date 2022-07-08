@@ -1,0 +1,10 @@
+clear_flags
+SOURCE=sources/zita-convolver-4.0.3/source
+echo "Building $SOURCE ..." >> $LOG
+
+export LDFLAGS="$LDFLAGS -landroid"
+cd $CWD/$SOURCE
+make clean || true
+make
+make install
+

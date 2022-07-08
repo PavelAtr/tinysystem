@@ -1,0 +1,14 @@
+clear_flags
+SOURCE=sources/libgpg-error-1.38
+echo "Building $SOURCE ..." >> $LOG
+
+cd $CWD/$SOURCE
+export CFLAGS="$CFLAGS -include bthread.h"
+export LDFLAGS="$LDFLAGS -lbthread"
+make clean || true
+./configure --prefix=$PREFIX --host=$TARGET
+make -j $NUMJOB
+make install
+cd $PKG_CONFIG_LIBDIR
+ln -s gpg-error.pc libgpg-error.pc
+cd $CWD/$SOURCE

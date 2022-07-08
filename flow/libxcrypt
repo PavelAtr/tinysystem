@@ -1,0 +1,6 @@
+if [ ! -z "${LIBXCRYPT}" ]
+then
+    SOURCE=sources/libxcrypt-4.4.18
+    echo "Building $SOURCE ..." >> $LOG
+    . $CWD/scripts/libxcrypt; package_make libxcrypt 4.4.18 tw1
+fi

@@ -1,0 +1,13 @@
+clear_flags
+SOURCE=sources/gtk+2.0-2.24.33
+echo "Building $SOURCE ..." >> $LOG
+
+cd $CWD/$SOURCE
+./configure --prefix=$PREFIX --host=$TARGET \
+--enable-introspection=no \
+--disable-cups
+
+make clean || true
+make -j $NUMJOB
+make install
+

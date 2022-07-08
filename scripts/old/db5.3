@@ -1,0 +1,10 @@
+clear_flags
+SOURCE=sources/db5.3-5.3.28+dfsg1/build_unix
+echo "Building $SOURCE ..." >> $LOG
+
+cd $CWD/$SOURCE
+make clean || true
+../dist/configure --prefix=$PREFIX --host=arm-linux-gnu
+make -j $NUMJOB
+make install
+

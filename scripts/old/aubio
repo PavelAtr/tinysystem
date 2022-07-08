@@ -1,0 +1,16 @@
+clear_flags
+SOURCE=sources/aubio-0.4.9
+echo "Building $SOURCE ..." >> $LOG
+
+cd $CWD/$SOURCE
+export CPPFLAGS=$CXXFLAGS
+
+
+TMPDIR=/tmp
+WAF=./waf
+$WAF clean || true
+rm .lock-waf* || true
+$WAF configure --with-target-platform=$TARGET --disable-tests --disable-examples \
+  --prefix=$PREFIX --libdir=$PREFIX/lib
+$WAF -v build  --destdir=$TMPDIR
+$WAF -v install --destdir=$DESTDIR

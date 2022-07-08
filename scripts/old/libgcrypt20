@@ -1,0 +1,12 @@
+clear_flags
+SOURCE=sources/libgcrypt20-1.8.7
+
+echo "Building $SOURCE ..." >> $LOG
+cd $CWD/$SOURCE
+./configure --prefix=$PREFIX --host=$TARGET \
+ --with-libgpg-error-prefix=$DESTDIR/$PREFIX \
+--with-sysroot=$DESTDIR
+make clean || true
+make -j $NUMJOB
+make install
+

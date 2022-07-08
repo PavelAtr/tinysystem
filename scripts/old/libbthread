@@ -1,0 +1,11 @@
+clear_flags
+SOURCE=sources/libbthread
+echo "Building $SOURCE ..." >> $LOG
+unset LDFLAGS
+cd $CWD/$SOURCE
+autoreconf -i
+rm config.h || true
+./configure --prefix=$PREFIX --build=$BUILD --host=$TARGET
+make clean || true
+make -j $NUMJOB
+make install

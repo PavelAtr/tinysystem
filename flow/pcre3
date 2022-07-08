@@ -1,0 +1,6 @@
+if [ ! -z "${PCRE3}" ]
+then
+    SOURCE=sources/pcre3-8.39
+    echo "Building $SOURCE ..." >> $LOG
+    . $CWD/scripts/pcre3; package_make pcre3 8.39 tw1
+fi

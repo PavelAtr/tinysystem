@@ -1,0 +1,22 @@
+clear_flags
+SOURCE=sources/fftw3-3.3.8
+echo "Building $SOURCE ..." >> $LOG
+
+cd $CWD/$SOURCE
+
+
+./configure --prefix=$PREFIX --host=$TARGET \
+--enable-shared \
+--enable-threads
+make clean || true
+make -j $NUMJOB
+make install
+
+./configure --prefix=$PREFIX --host=$TARGET \
+--enable-shared \
+--enable-single \
+--enable-long \
+--enable-threads
+make clean || true
+make -j $NUMJOB
+make install

@@ -1,0 +1,37 @@
+clear_flags
+SOURCE=sources/pulseaudio-14.2
+echo "Building $SOURCE ..." >> $LOG
+
+replace_tmp()
+{
+    sed -i 's/\/tmp/\/data\/user\/0\/ru.tinyware.hifihieringaid\/files\/run/g' $1
+}
+
+cd $CWD/$SOURCE
+
+find . | grep "\.c$" | while read src
+do
+    grep "/tmp" $src && echo $src && replace_tmp $src || true
+done
+
+
+find .  | grep "\.h$" | while read head
+do
+    grep "/tmp" $head && echo "$head" && replace_tmp $head || true
+done
+
+./configure --prefix=$PREFIX --host=$TARGET \
+  --disable-udev \
+  --disable-hal-compat \
+  --without-caps \
+  --disable-systemd-daemon \
+  --disable-systemd-login \
+  --disable-systemd-journal \
+  --disable-atomic-arm-linux-helpers \
+  --disable-neon-opt
+
+echo "#undef HAVE_OPEN64" >> config.h
+make clean || true
+make -j $NUMJOB
+make install
+

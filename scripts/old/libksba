@@ -1,0 +1,13 @@
+clear_flags
+SOURCE=sources/libksba-1.5.0
+echo "Building $SOURCE ..." >> $LOG
+
+cd $CWD/$SOURCE
+make clean || true
+./configure --prefix=$PREFIX --host=$TARGET \
+--with-sysroot=$DESTDIR \
+--with-libgpg-error-prefix=$DESTDIR/$PREFIX
+
+make -j $NUMJOB
+make install
+

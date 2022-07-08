@@ -1,0 +1,11 @@
+clear_flags
+SOURCE=sources/nettle-3.7.3
+echo "Building $SOURCE ..." >> $LOG
+
+cd $CWD/$SOURCE
+make clean || true
+./configure --prefix=$PREFIX --host=$TARGET \
+--enable-mini-gmp
+make -j $NUMJOB
+make install
+

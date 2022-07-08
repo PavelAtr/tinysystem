@@ -1,0 +1,10 @@
+clear_flags
+export SOURCE=sources/libsigc++-2.0-2.10.4
+echo "Building $SOURCE ..." >> $LOG
+cd $CWD/$SOURCE
+
+LDFLAGS="$LDFLAGS -static-libstdc++"
+./configure --prefix=$PREFIX --build=$BUILD --host=$TARGET
+make clean || true
+make -j $NUMJOB
+make install

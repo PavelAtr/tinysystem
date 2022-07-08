@@ -1,0 +1,13 @@
+clear_flags
+SOURCE=sources/noise-repellent-0.1.5
+echo "Building $SOURCE ..." >> $LOG
+
+cd $CWD/$SOURCE
+rm -r _build || true
+export OLDPREFIX=$PREFIX
+PREFIX="$PREFIX/lib/lv2"
+meson --prefix $PREFIX --cross-file $CWD/scripts/meson_cross/$ABI.cfg _build  .
+ninja -C _build
+ninja -C _build install
+export PREFIX=$OLDPREFIX
+

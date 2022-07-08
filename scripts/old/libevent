@@ -1,0 +1,13 @@
+clear_flags
+SOURCE=sources/libevent-2.1.12-stable
+echo "Building $SOURCE ..." >> $LOG
+
+export CFLAGS="$CFLAGS -fPIC"
+export LDFLAGS="$LDFLAGS -L./.libs"
+
+cd $CWD/$SOURCE
+./configure --prefix=$PREFIX --host=$TARGET
+make clean || true
+make -j $NUMJOB
+make install
+

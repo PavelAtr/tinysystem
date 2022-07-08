@@ -1,0 +1,14 @@
+clear_flags
+SOURCE=sources/gnutls28-3.7.1
+echo "Building $SOURCE ..." >> $LOG
+
+export CFLAGS="$CFLAGS -I$DESTDIR/$PREFIX/include/p11-kit-1"
+export CXXFLAGS=$CFLAGS
+export LDFLAGS="$LDFLAGS -lintl"
+cd $CWD/$SOURCE
+make clean || true
+./configure --prefix=$PREFIX --host=$TARGET \
+--with-nettle-mini
+make V=1 -j $NUMJOB
+make install
+

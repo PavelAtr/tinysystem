@@ -1,0 +1,15 @@
+clear_flags
+SOURCE=sources/lilv-0.24.12
+echo "Building $SOURCE ..." >> $LOG
+
+cd $CWD/$SOURCE
+export CPPFLAGS=$CXXFLAGS
+
+
+TMPDIR=/tmp
+WAF=./waf
+$WAF clean || true
+rm .lock-waf* || true
+$WAF configure --prefix=$PREFIX --libdir=$PREFIX/lib
+$WAF -v build  --destdir=$TMPDIR
+$WAF -v install --destdir=$DESTDIR

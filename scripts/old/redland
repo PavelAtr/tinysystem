@@ -1,0 +1,11 @@
+clear_flags
+SOURCE=sources/redland-1.0.17
+echo "Building $SOURCE ..." >> $LOG
+
+cd $CWD/$SOURCE
+./configure --prefix=$PREFIX --host=$TARGET
+make clean || true
+make -j $NUMJOB
+make install
+ln -s redland.pc $PKG_CONFIG_LIBDIR/lrdf.pc || true
+ln -s librdf.h $DESTDIR/$PREFIX/include/lrdf.h || true

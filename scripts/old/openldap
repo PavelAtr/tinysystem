@@ -1,0 +1,14 @@
+clear_flags
+SOURCE=sources/openldap-2.4.57+dfsg
+echo "Building $SOURCE ..." >> $LOG
+
+cd $CWD/$SOURCE
+export CFLAGS="$CFLAGS -DMDB_USE_POSIX_MUTEX -DANDROID"
+export CPPFLAGS=$CFLAGS
+#make clean || true
+#./configure --prefix=$PREFIX --build=$BUILD --host=$TARGET \
+#--with-yielding_select=no \
+#--with-tls=auto
+make -j $NUMJOB
+make install
+

@@ -1,0 +1,10 @@
+clear_flags
+SOURCE=sources/sqlite3-3.34.1
+echo "Building $SOURCE ..." >> $LOG
+
+cd $CWD/$SOURCE
+make clean || true
+./configure --prefix=$PREFIX --host=$TARGET
+make -j $NUMJOB
+make install
+

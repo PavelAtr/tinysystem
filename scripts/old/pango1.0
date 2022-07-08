@@ -1,0 +1,13 @@
+clear_flags
+SOURCE=sources/pango1.0-1.46.2
+echo "Building $SOURCE ..." >> $LOG
+
+cd $CWD/$SOURCE
+export CFLAGS="$CFLAGS -I$DESTDIR/$PREFIX/include/cairo -DCAIRO_HAS_FC_FONT=1"
+
+rm -r _build || true
+meson --prefix=$PREFIX --cross-file $CWD/scripts/meson_cross/$ABI.cfg -Dintrospection=false -Dcairo=enabled \
+-Dgtk_doc=false -Dinstall_tests=false  _build  .
+ninja -C _build
+ninja -C _build install
+

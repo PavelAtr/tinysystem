@@ -1,0 +1,16 @@
+clear_flags
+SOURCE=sources/liblo-0.31
+echo "Building $SOURCE ..." >> $LOG
+
+cd $CWD/$SOURCE
+./configure --prefix=$PREFIX --build=$BUILD --host=$TARGET \
+  --disable-maintainer-mode \
+  --disable-debug \
+  --disable-tests \
+  --disable-network-tests \
+  --disable-tools \
+  --disable-examples
+make clean || true
+make -j $NUMJOB
+make install
+

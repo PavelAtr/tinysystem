@@ -1,0 +1,10 @@
+clear_flags
+SOURCE=sources/libtasn1-6-4.16.0
+echo "Building $SOURCE ..." >> $LOG
+
+cd $CWD/$SOURCE
+make clean || true
+./configure --prefix=$PREFIX --host=$TARGET
+make -j $NUMJOB
+make install
+

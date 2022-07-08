@@ -1,0 +1,6 @@
+clear_flags
+SOURCE=sources/fonts-dejavu-core_2.37
+echo "Building $SOURCE ..." >> $LOG
+
+cd $CWD/$SOURCE
+make install

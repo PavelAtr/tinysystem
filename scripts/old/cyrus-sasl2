@@ -1,0 +1,13 @@
+clear_flags
+SOURCE=sources/cyrus-sasl2-2.1.27+dfsg
+echo "Building $SOURCE ..." >> $LOG
+
+cd $CWD/$SOURCE
+make clean || true
+./configure --prefix=$PREFIX --host=$TARGET \
+--enable-sample=no \
+--with-sysroot=$DESTDIR/$PREFIX \
+--enable-gssapi=$DESTDIR/$PREFIX
+make -j $NUMJOB
+make install
+

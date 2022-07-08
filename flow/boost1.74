@@ -1,0 +1,6 @@
+if [ ! -z "${BOOST174}" ]
+then
+    SOURCE=sources/boost1.74-1.74.0
+    echo "Building $SOURCE ..." >> $LOG
+    . $CWD/scripts/boost1.74; package_b2 boost1.74 1.74.0 tw1
+fi

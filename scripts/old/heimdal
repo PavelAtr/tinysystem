@@ -1,0 +1,11 @@
+clear_flags
+SOURCE=sources/heimdal-7.7.0+dfsg
+echo "Building $SOURCE ..." >> $LOG
+
+export CFLAGS="$CFLAGS -DNBBY=8 -fPIC -I$DESTDIR/$PREFIX/include/heimdal"
+cd $CWD/$SOURCE
+make clean || true
+./configure --prefix=$PREFIX --host=$TARGET
+make -j $NUMJOB
+make install
+

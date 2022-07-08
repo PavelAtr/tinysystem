@@ -1,0 +1,10 @@
+clear_flags
+SOURCE=sources/python3-dev
+echo "Building $SOURCE ..." >> $LOG
+
+[ "$TARGET" == "x86_64-linux-android" ] && DIST_TARGET=x86_64-linux-gnu
+[ "$TARGET" == "aarch64-linux-android" ] && DIST_TARGET=aarch64-linux-gnu
+
+cp -r /usr/include/python3.9 $DESTDIR/$PREFIX/include/python3.9
+mkdir -p  $DESTDIR/$PREFIX/include/$DIST_TARGET
+cp -r /usr/include/$BUILD/python3.9 $DESTDIR/$PREFIX/include/$DIST_TARGET/python3.9

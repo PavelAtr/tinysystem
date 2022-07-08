@@ -1,0 +1,24 @@
+clear_flags
+SOURCE=sources/avahi-0.8
+echo "Building $SOURCE ..." >> $LOG
+
+cd $CWD/$SOURCE
+./configure --prefix=$PREFIX --host=$TARGET \
+  --with-distro=none \
+  --enable-introspection=no \
+  --disable-qt3 \
+  --disable-qt4 \
+  --disable-qt5 \
+  --disable-gdbm \
+  --disable-libdaemon \
+  --disable-pygobject \
+  --disable-python-dbus \
+  --disable-mono \
+  --disable-monodoc \
+  --disable-xmltoman \
+  --disable-manpages
+
+make clean || true
+make -j $NUMJOB
+make install
+

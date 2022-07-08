@@ -1,0 +1,14 @@
+clear_flags
+SOURCE=sources/libx11-1.7.2
+echo "Building $SOURCE ..." >> $LOG
+
+CFLAGS="$CFLAGS -include sys/ioctl.h"
+cd $CWD/$SOURCE
+./configure --prefix=$PREFIX --host=$TARGET \
+--with-keysymdefdir=$DESTDIR/$PREFIX/include/X11 \
+--with-sysroot=$DESTDIR \
+--enable-static=no
+make clean || true
+make -j $NUMJOB
+make install
+

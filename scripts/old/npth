@@ -1,0 +1,10 @@
+clear_flags
+SOURCE=sources/npth-1.6
+echo "Building $SOURCE ..." >> $LOG
+
+cd $CWD/$SOURCE
+make clean || true
+./configure --prefix=$PREFIX --host=$TARGET
+make -j $NUMJOB
+make install
+

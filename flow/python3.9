@@ -1,0 +1,6 @@
+if [ ! -z "${PYTHON39}" ]
+then
+    SOURCE=sources/python3.9-3.9.2
+    echo "Building $SOURCE ..." >> $LOG
+    . $CWD/scripts/python3.9; package_make python3.9 3.9.2 tw1
+fi

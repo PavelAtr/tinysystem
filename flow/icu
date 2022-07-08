@@ -1,0 +1,6 @@
+if [ ! -z "${ICU}" ]
+then
+    SOURCE=sources/icu-67.1
+    echo "Building $SOURCE ..." >> $LOG
+    . $CWD/scripts/icu; package_make icu 67.1 tw1
+fi

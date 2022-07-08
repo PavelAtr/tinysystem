@@ -1,0 +1,10 @@
+clear_flags
+SOURCE=sources/libwnck3-3.36.0
+echo "Building $SOURCE ..." >> $LOG
+
+cd $CWD/$SOURCE
+rm -r _build || true
+meson --prefix=$PREFIX --cross-file $CWD/scripts/meson_cross/$ABI.cfg -Dintrospection=disabled  _build  .
+ninja -C _build
+ninja -C _build install
+

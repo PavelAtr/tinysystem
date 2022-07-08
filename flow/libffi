@@ -1,0 +1,6 @@
+if [ ! -z "${LIBFFI}" ]
+then
+    SOURCE=sources/libffi-3.3
+    echo "Building $SOURCE ..." >> $LOG
+    . $CWD/scripts/libffi; package_make libffi 3.3 tw1
+fi

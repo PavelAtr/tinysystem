@@ -1,0 +1,6 @@
+if [ ! -z "${GLIB20}" ]
+then
+    SOURCE=sources/glib2.0-2.66.8
+    echo "Building $SOURCE ..." >> $LOG
+    . $CWD/scripts/glib2.0; package_meson glib2.0 2.66.8 tw1
+fi

@@ -1,0 +1,15 @@
+clear_flags
+SOURCE=sources/sratom-0.6.8
+echo "Building $SOURCE ..." >> $LOG
+
+cd $CWD/$SOURCE
+export CPPFLAGS=$CXXFLAGS
+
+
+TMPDIR=/tmp
+WAF=./waf
+$WAF clean || true
+rm .lock-waf* || true
+$WAF configure --prefix=$PREFIX --libdir=$PREFIX/lib
+$WAF -v build  --destdir=$TMPDIR
+$WAF -v install --destdir=$DESTDIR

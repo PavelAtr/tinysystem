@@ -1,0 +1,10 @@
+clear_flags
+SOURCE=sources/gcc-10.2.0/libstdc++-v3
+echo "Building $SOURCE ..." >> $LOG
+
+cd $CWD/$SOURCE
+./configure --prefix=$PREFIX --host=$TARGET
+make clean || true
+make -j $NUMJOB
+make install
+

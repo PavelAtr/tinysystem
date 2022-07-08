@@ -1,0 +1,12 @@
+clear_flags
+SOURCE=sources/cairo-1.16.0
+echo "Building $SOURCE ..." >> $LOG
+
+cd $CWD/$SOURCE
+export CFLAGS="$CFLAGS -DCAIRO_NO_MUTEX=1"
+export CXXFLAGS=$CFLAGS
+./configure --prefix=$PREFIX --host=$TARGET --enable-pthread=no
+make clean || true
+make -j $NUMJOB
+make install
+

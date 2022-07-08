@@ -1,0 +1,6 @@
+if [ ! -z "${EXPAT}" ]
+then
+    SOURCE=sources/expat-2.2.10
+    echo "Building $SOURCE ..." >> $LOG
+    . $CWD/scripts/expat; package_make expat 2.2.10 tw1
+fi

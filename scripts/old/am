@@ -1,0 +1,7 @@
+clear_flags
+SOURCE=sources/am
+echo "Building $SOURCE ..." >> $LOG
+
+cd $CWD/$SOURCE
+make install
+

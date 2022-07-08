@@ -1,0 +1,9 @@
+clear_flags
+SOURCE=sources/vamp-plugin-sdk-2.10.0
+echo "Building $SOURCE ..." >> $LOG
+cd $CWD/$SOURCE
+./configure --prefix=$PREFIX --host=$TARGET
+make clean || true
+make -j $NUMJOB
+make install
+

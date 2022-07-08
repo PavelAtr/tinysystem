@@ -1,0 +1,24 @@
+clear_flags
+SOURCE=sources/gtk+3.0-3.24.33
+echo "Building $SOURCE ..." >> $LOG
+
+
+export CFLAGS="$CFLAGS -include ashm.h"
+export CXXFLAGS=$CFLAGS
+export LDFLAGS="$LDFLAGS -landroid-shm"
+
+cd $CWD/$SOURCE
+./configure --prefix=$PREFIX \
+--host=$TARGET \
+--build=$BUILD \
+--enable-introspection=no \
+--disable-cups \
+--disable-schemas-compile \
+--disable-installed-tests \
+--enable-broadway-backend \
+--enable-x11-backend
+
+make clean || true
+make -j $NUMJOB
+make install
+

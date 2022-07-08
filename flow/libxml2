@@ -1,0 +1,6 @@
+if [ ! -z "${LIBXML2}" ]
+then
+    SOURCE=sources/libxml2-2.9.10+dfsg
+    echo "Building $SOURCE ..." >> $LOG
+    . $CWD/scripts/libxml2; package_make libxml2 2.9.10+dfsg tw1
+fi

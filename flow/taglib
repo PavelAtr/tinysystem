@@ -1,0 +1,6 @@
+if [ ! -z "${TAGLIB}" ]
+then
+    SOURCE=sources/taglib-1.11.1+dfsg.1
+    echo "Building $SOURCE ..." >> $LOG
+    . $CWD/scripts/taglib; package_make taglib 1.11.1+dfsg.1 tw1
+fi

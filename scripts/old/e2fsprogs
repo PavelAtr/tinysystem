@@ -1,0 +1,11 @@
+clear_flags
+SOURCE=sources/e2fsprogs-1.46.2
+echo "Building $SOURCE ..." >> $LOG
+
+install -D /usr/include/linux/fsmap.h $DESTDIR/$PREFIX/include/linux/fsmap.h
+cd $CWD/$SOURCE
+make clean || true
+./configure --prefix=$PREFIX --host=$TARGET
+make -j $NUMJOB
+make install
+

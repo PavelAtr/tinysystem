@@ -1,0 +1,6 @@
+if [ ! -z "${LIBBSD}" ]
+then
+    SOURCE=sources/libbsd-0.11.3
+    echo "Building $SOURCE ..." >> $LOG
+    . $CWD/scripts/libbsd; package_make libbsd 0.11.3 tw1
+fi

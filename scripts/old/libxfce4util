@@ -1,0 +1,11 @@
+clear_flags
+SOURCE=sources/libxfce4util-4.16.0
+echo "Building $SOURCE ..." >> $LOG
+
+cd $CWD/$SOURCE
+./configure --prefix=$PREFIX --host=$TARGET \
+--enable-introspection=no
+make clean || true
+make -j $NUMJOB
+make install
+

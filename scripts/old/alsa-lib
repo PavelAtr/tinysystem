@@ -1,0 +1,13 @@
+clear_flags
+SOURCE=sources/alsa-lib-1.2.4-tw1
+echo "Building $SOURCE ..." >> $LOG
+CFLAGS="$CFLAGS -DANDROID"
+cd $CWD/$SOURCE
+./configure --prefix=$PREFIX --host=$TARGET \
+  --with-configdir=$PREFIX/etc/alsa \
+  --with-plugindir=$PREFIX/usr/lib/alsa
+
+make clean || true
+make -j $NUMJOB
+make install
+

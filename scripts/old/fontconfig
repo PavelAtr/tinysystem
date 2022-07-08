@@ -1,0 +1,12 @@
+clear_flags
+SOURCE=sources/fontconfig-2.13.1
+echo "Building $SOURCE ..." >> $LOG
+
+cp -r /usr/include/uuid $DESTDIR/$PREFIX/include/
+
+cd $CWD/$SOURCE
+./configure --prefix=$PREFIX --host=$TARGET --enable-libxml2
+make clean || true
+make -j $NUMJOB
+make install
+

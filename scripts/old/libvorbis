@@ -1,0 +1,10 @@
+clear_flags
+SOURCE=sources/libvorbis-1.3.7
+echo "Building $SOURCE ..." >> $LOG
+
+cd $CWD/$SOURCE
+./configure --prefix=$PREFIX --host=$TARGET
+make clean || true
+make -j $NUMJOB
+make install
+

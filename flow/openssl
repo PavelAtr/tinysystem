@@ -1,0 +1,6 @@
+if [ ! -z "${OPENSSL}" ]
+then
+    SOURCE=sources/openssl-1.1.1n
+    echo "Building $SOURCE ..." >> $LOG
+    . $CWD/scripts/openssl; package_make openssl 1.1.1n tw1
+fi

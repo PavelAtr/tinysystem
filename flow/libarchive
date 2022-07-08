@@ -1,0 +1,6 @@
+if [ ! -z "${LIBARCHIVE}" ]
+then
+    SOURCE=sources/libarchive-3.4.3
+    echo "Building $SOURCE ..." >> $LOG
+    . $CWD/scripts/libarchive; package_make libarchive 3.4.3 tw1
+fi

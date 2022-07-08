@@ -1,0 +1,12 @@
+clear_flags
+SOURCE=sources/opensles-alsa
+echo "Building $SOURCE ..." >> $LOG
+
+export CFLAGS="$CFLAGS -DTMPDIR=$SHORTPREFIX/run"
+cd $CWD/$SOURCE
+make clean || true
+make
+make install
+
+
+sed -i "s/\/run/\/data\/user\/0\/ru.tinyware.hifihieringaid\/files\/run/" $DESTDIR/$PREFIX/etc/skel/.asoundrc

@@ -1,0 +1,10 @@
+clear_flags
+SOURCE=sources/ladspa-sdk-1.15
+echo "Building $SOURCE ..." >> $LOG
+
+cd $CWD/$SOURCE
+find -name *.o | xargs rm || true
+find -name *.so* | xargs rm || true
+cd $CWD/$SOURCE/src
+make
+make install

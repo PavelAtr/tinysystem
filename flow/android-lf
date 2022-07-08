@@ -1,0 +1,6 @@
+if [ ! -z "${ANDROIDLF}" ]
+then
+    SOURCE=sources/android-lf
+    echo "Building $SOURCE ..." >> $LOG
+    . $CWD/scripts/android-lf; package_make android-lf 10.0 tw1
+fi

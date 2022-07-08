@@ -1,0 +1,29 @@
+clear_flags
+SOURCE=sources/X11headers
+echo "Building $SOURCE ..." >> $LOG
+
+cd $CWD/$SOURCE
+
+install -D /usr/include/X11/X.h $DESTDIR/$PREFIX/include/X11/X.h
+install /usr/include/X11/Xfuncproto.h $DESTDIR/$PREFIX/include/X11/Xfuncproto.h
+install /usr/include/X11/Xosdefs.h $DESTDIR/$PREFIX/include/X11/Xosdefs.h
+install /usr/include/X11/Xproto.h $DESTDIR/$PREFIX/include/X11/Xproto.h
+install /usr/include/X11/keysym.h $DESTDIR/$PREFIX/include/X11/keysym.h
+install /usr/include/X11/Xmd.h $DESTDIR/$PREFIX/include/X11/Xmd.h
+install /usr/include/X11/Xprotostr.h $DESTDIR/$PREFIX/include/X11/Xprotostr.h
+install /usr/include/X11/keysymdef.h $DESTDIR/$PREFIX/include/X11/keysymdef.h
+install /usr/include/X11/Xfuncs.h $DESTDIR/$PREFIX/include/X11/Xfuncs.h
+install /usr/include/X11/Xatom.h $DESTDIR/$PREFIX/include/X11/Xatom.h
+install /usr/include/X11/Xos.h $DESTDIR/$PREFIX/include/X11/Xos.h
+install /usr/include/X11/Xarch.h $DESTDIR/$PREFIX/include/X11/Xarch.h
+install /usr/include/X11/Xthreads.h $DESTDIR/$PREFIX/include/X11/Xthreads.h
+install /usr/include/X11/Xos_r.h $DESTDIR/$PREFIX/include/X11/Xos_r.h
+install /usr/include/X11/Xpoll.h $DESTDIR/$PREFIX/include/X11/Xpoll.h
+install -D /usr/include/X11/Xtrans/Xtrans.h $DESTDIR/$PREFIX/include/X11/Xtrans/Xtrans.h
+install /usr/include/X11/Xtrans/* $DESTDIR/$PREFIX/include/X11/Xtrans/
+mkdir -p $DESTDIR/$PREFIX/include/X11/extensions/
+install /usr/include/X11/extensions/* $DESTDIR/$PREFIX/include/X11/extensions/
+install /usr/include/X11/Xdefs.h $DESTDIR/$PREFIX/include/X11/Xdefs.h
+install -D /usr/include/X11/Xft/Xft.h $DESTDIR/$PREFIX/include/X11/Xft/Xft.h
+
+make install

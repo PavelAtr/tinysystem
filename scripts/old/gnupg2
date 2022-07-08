@@ -1,0 +1,17 @@
+clear_flags
+SOURCE=sources/gnupg2-2.2.27
+echo "Building $SOURCE ..." >> $LOG
+
+cd $CWD/$SOURCE
+./configure --prefix=$PREFIX --host=$TARGET \
+  --with-ksba-prefix=$DESTDIR/$PREFIX \
+  --with-npth-prefix=$DESTDIR/$PREFIX \
+  --with-libgpg-error-prefix=$DESTDIR/$PREFIX \
+  --with-libgcrypt-prefix=$DESTDIR/$PREFIX \
+  --with-libassuan-prefix=$DESTDIR/$PREFIX
+
+make clean || true
+make -j $NUMJOB
+make install
+
+

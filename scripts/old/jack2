@@ -1,0 +1,20 @@
+clear_flags
+SOURCE=sources/jack2
+echo "Building $SOURCE ..." >> $LOG
+
+cd $CWD/$SOURCE
+
+CFLAGS="$CFLAGS -U__ANDROID__ -DUSE_LIBANDROIDSHM -DUSE_POSIX_SHM -DUSE_LIBBTHREAD -DUSE_SHMSEMAPHORE"
+CXXFLAGS=$CFLAGS
+LDFLAGS="$LDFLAGS -landroid-shm -lbthread"
+TMPDIR=/tmp
+./waf clean || true
+rm .lock-waf* || true
+./waf configure --prefix=$PREFIX --libdir=$PREFIX/lib --firewire=no --example-tools=no
+./waf -v --destdir=$TMPDIR
+./waf -v install --destdir=$DESTDIR
+
+$CXX -fPIC -O0 -g -Wall $CXXFLAGS -DSERVER_SIDE -DUSE_LIBBTHREAD -Wno-deprecated \
+-shared -I posix/ -I common/ -I common/jack/  -I linux/ \
+android/JackOpenSLESDriver.cpp android/opensl_io.c \
+$LDFLAGS -ljackserver -lOpenSLES -o $DESTDIR/$SHORTPREFIX/usr/lib/jack/jack_opensles.so

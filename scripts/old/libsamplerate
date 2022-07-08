@@ -1,0 +1,12 @@
+clear_flags
+SOURCE=sources/libsamplerate-0.2.1+ds0
+echo "Building $SOURCE ..." >> $LOG
+
+mkdir -p $DESTDIR/$PREFIX/include/sys/
+cp /usr/include/sys/soundcard.h $DESTDIR/$PREFIX/include/sys/
+cd $CWD/$SOURCE
+./configure --prefix=$PREFIX --host=$TARGET
+make clean || true
+make -j $NUMJOB
+make install
+

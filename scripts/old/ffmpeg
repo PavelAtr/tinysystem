@@ -1,0 +1,40 @@
+clear_flags
+SOURCE=sources/ffmpeg-4.3.3
+echo "Building $SOURCE ..." >> $LOG
+
+[ "$TARGET" == "aarch64-linux-android" ] && ARCH=aarch64
+[ "$TARGET" == "x86_64-linux-android" ] && ARCH=x86
+
+export HOSTCC=$CC
+export HOSTLD=$CC
+
+cd $CWD/$SOURCE
+./configure \
+  --prefix=$PREFIX \
+  --enable-gpl \
+  --enable-pic \
+  --enable-cross-compile \
+  --as="$CC" \
+  --cc="$CC" \
+  --ld="$CC" \
+  --disable-x86asm \
+  --enable-shared \
+  --extra-cflags="$CFLAGS" \
+  --strip="$STRIP" \
+  --arch=$ARCH
+
+echo "#undef B0" >> config.h
+echo "#undef B1" >> config.h
+echo "#define HAVE_HYPOT 1" >> config.h
+echo "#define HAVE_CBRT 1" >> config.h
+echo "#define HAVE_CBRTF 1" >> config.h
+echo "#define HAVE_ERF 1" >> config.h
+echo "#define HAVE_INET_ATON 1" >> config.h
+echo "#define HAVE_GETADDRINFO 1" >> config.h
+
+
+
+make clean || true
+make V=1 -j $NUMJOB
+make install
+

@@ -1,0 +1,8 @@
+clear_flags
+SOURCE=sources/android-shm
+echo "Building $SOURCE ..." >> $LOG
+
+cd $CWD/$SOURCE
+make clean || true
+make shm-launch
+make install

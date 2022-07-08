@@ -1,0 +1,10 @@
+clear_flags
+SOURCE=sources/android-shmem
+echo "Building $SOURCE ..." >> $LOG
+
+export LDFLAGS="$LDFLAGS -landroid"
+export CFLAGS="$CFLAGS -DCMDSOCKNAME=$SHORTPREFIX/run/shm"
+cd $CWD/$SOURCE
+rm *.so || true
+make
+make install

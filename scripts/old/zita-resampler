@@ -1,0 +1,10 @@
+clear_flags
+SOURCE=sources/zita-resampler-1.8.0/source
+echo "Building $SOURCE ..." >> $LOG
+
+export LDFLAGS="$LDFLAGS -landroid"
+cd $CWD/$SOURCE
+make clean || true
+make
+make install
+

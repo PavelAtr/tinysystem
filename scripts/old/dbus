@@ -1,0 +1,14 @@
+clear_flags
+SOURCE=sources/dbus-1.12.20
+echo "Building $SOURCE ..." >> $LOG
+
+cd $CWD/$SOURCE
+export DBUS_X_CFLAGS=""
+export X_CFLAGS=""
+./configure --prefix=$PREFIX --host=$TARGET --build=$BUILD \
+--disable-tests
+
+make clean || true
+make -j $NUMJOB
+make install
+

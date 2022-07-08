@@ -1,0 +1,13 @@
+clear_flags
+SOURCE=sources/suil-0.10.10
+echo "Building $SOURCE ..." >> $LOG
+
+cd $CWD/$SOURCE
+
+
+TMPDIR=/tmp
+./waf clean || true
+rm .lock-waf* || true
+./waf configure --prefix=$PREFIX --libdir=$PREFIX/lib
+./waf -v --destdir=$TMPDIR
+./waf -v install --destdir=$DESTDIR

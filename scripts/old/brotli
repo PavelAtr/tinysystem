@@ -1,0 +1,11 @@
+clear_flags
+SOURCE=sources/brotli-1.0.9
+echo "Building $SOURCE ..." >> $LOG
+
+cd $CWD/$SOURCE
+./bootstrap
+./configure --prefix=$PREFIX --host=$TARGET
+make clean || true
+make -j $NUMJOB
+make install
+
