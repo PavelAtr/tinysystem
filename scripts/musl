@@ -5,8 +5,8 @@ clear_flags
 export DESTDIR=$STATICROOT
 
 cd $CWD/$SOURCE
-make clean || true
 ./configure --prefix=$PREFIX --host=$TARGET
+make clean || true
 make -j $NUMJOB
 make install
 

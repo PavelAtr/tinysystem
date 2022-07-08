@@ -2,5 +2,5 @@ if [ ! -z "${UTILLINUXSTATIC}" ]
 then
     SOURCE=sources/util-linux-2.36.1
     echo "Building $SOURCE ..." >> $LOG
-    . $CWD/scripts/util-linux-static;       package_make util-linux-static 2.36.1 tw1
+    . $CWD/scripts/util-linux-static; package_make util-linux-static 2.36.1 tw1
 fi

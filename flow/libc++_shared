@@ -2,5 +2,5 @@ if [ ! -z "${LIBC_SHARED}" ]
 then
     SOURCE=sources/libc++_shared
     echo "Building $SOURCE ..." >> $LOG
-    . $CWD/scripts/libc++_shared;           package_make libc++_shared 9.0 tw1
+    . $CWD/scripts/libc++_shared; package_make libc++_shared 9.0 tw1
 fi

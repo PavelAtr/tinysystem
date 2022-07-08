@@ -5,8 +5,8 @@ export LDFLAGS="-L${STATICROOT}${PREFIX}/lib -lc_nonshared"
 export CFLAGS="-I${STATICROOT}${PREFIX}/include -DGLOB_NOMAGIC=0"
 cd $CWD/$SOURCE
 ./autogen.sh
-make clean || true
 ./configure --prefix=$PREFIX --host=$TARGET \
 --enable-static
+make clean || true
 make -j $NUMJOB
 . $CWD/10_cross_${ABI}_ndk.cfg

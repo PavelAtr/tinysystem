@@ -2,6 +2,13 @@ clear_flags
 
 cd $CWD/$SOURCE/source
 touch ./config/pkgdata.inc
-./configure --prefix=$PREFIX --host=$TARGET --with-cross-build=$CWD/scripts/icu67 --disable-tools --disable-tests --disable-samples --disable-extras --disable-release
+
+LD_LIBRARY_PATH=${ROOT}/${PREFIX}/lib \
+./configure --prefix=$PREFIX --target=$TARGET \
+--with-cross-build=$CWD/scripts/icu67 \
+--disable-tools --disable-tests \
+--disable-samples \
+--disable-extras \
+--disable-release
 make clean || true
 make -j $NUMJOB

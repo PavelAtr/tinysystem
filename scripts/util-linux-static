@@ -4,9 +4,9 @@ clear_flags
 
 OLDPREFIX=$PREFIX
 mkdir -p ${STATICROOT}${OLDPREFIX}/include/sys/
-install /usr/$TARGET2/include/sys/syslog.h ${STATICROOT}${OLDPREFIX}/include/sys/
+install /usr/$TARGETGNU/include/sys/syslog.h ${STATICROOT}${OLDPREFIX}/include/sys/
 mkdir -p ${STATICROOT}${OLDPREFIX}/include/bits
-install /usr/$TARGET2/include/bits/syslog-path.h ${STATICROOT}${OLDPREFIX}/include/bits/
+install /usr/$TARGETGNU/include/bits/syslog-path.h ${STATICROOT}${OLDPREFIX}/include/bits/
 
 export PREFIX="${OLDPREFIX}/static"
 export LDFLAGS="-L${STATICROOT}${OLDPREFIX}/lib -lc_nonshared"

@@ -14,26 +14,19 @@ export CWD=$(pwd)
 
 . $CWD/Application.cfg
 
+. $CWD/10_cross_${ABI}_ndk.cfg
+
+clear_flags
 
 for arg in $*
 do
     parse_arg $arg
 done
 
-for ABI in $ABIs
-do
-
-. $CWD/10_cross_${ABI}_ndk.cfg
-
-clear_flags
-
-echo "" > $LOG
 
 mkdir -p ${ROOT}${PREFIX}
 mkdir -p ${STATICROOT}${PREFIX}
 [ ! -e $SHORTPREFIX ] && ln -s ${ROOT}${SHORTPREFIX} $SHORTPREFIX || true
-
-echo "===================== $ABI ===================" >> $LOG
 
 . $CWD/flow/headers
 . $CWD/flow/tinysystem-base
@@ -52,24 +45,23 @@ echo "===================== $ABI ===================" >> $LOG
 . $CWD/flow/eudev
 . $CWD/flow/coreutils
 . $CWD/flow/psmisc
+. $CWD/flow/libxcrypt
+. $CWD/flow/libffi
+. $CWD/flow/glib2.0
+. $CWD/flow/openssl
+. $CWD/flow/expat
+. $CWD/flow/python3.9
+. $CWD/flow/libxml2
+. $CWD/flow/libarchive
+. $CWD/flow/android-lf
+. $CWD/flow/icu
+. $CWD/flow/boost1.74
+. $CWD/flow/taglib
+. $CWD/flow/pcre3
+. $CWD/flow/libmd
+. $CWD/flow/libbsd
+. $CWD/flow/android-videolibs
 
-##. $CWD/scripts/libxcrypt;		package_make libxcrypt 4.4.18 tw1
-##. $CWD/scripts/libffi;			package_make libffi 3.3 tw1
-##. $CWD/scripts/glib2.0;			package_meson glib2.0 2.66.8 tw1
-##. $CWD/scripts/openssl;			package_make openssl 1.1.1n tw1
-##. $CWD/scripts/expat;			package_make expat 2.2.10 tw1
-##. $CWD/scripts/python3.9;		package_make python3.9 3.9.2 tw1
-##. $CWD/scripts/libxml2;			package_make libxml2 2.9.10+dfsg tw1
-##. $CWD/scripts/libarchive;		package_make libarchive 3.4.3 tw1
-##. $CWD/scripts/android-lf;		package_make android-lf 10.0 tw1
-##. $CWD/scripts/icu;			package_make icu 67.1 tw1
-##. $CWD/scripts/boost1.74;		package_b2 boost1.74 1.74.0 tw1
-##. $CWD/scripts/taglib;			package_make taglib 1.11.1+dfsg.1 tw1
-##. $CWD/scripts/pcre3;			package_make pcre3 8.39 tw1
-##. $CWD/scripts/libmd;			package_make libmd 1.0.3 tw1
-##. $CWD/scripts/libbsd;			package_make libbsd 0.11.3 tw1
-##. $CWD/scripts/android-videolibs;	package_make android-videolibs 10.0 tw1
-#exit 0
 ######. $CWD/scripts/X11headers;		package_make X11headers
 ######. $CWD/scripts/xcb-proto;		package_make xcb-proto
 ######. $CWD/scripts/libxau;		package_make libxau
@@ -177,4 +169,3 @@ echo "===================== $ABI ===================" >> $LOG
 ##. $CWD/scripts/fonts-dejavu-core;	package_make fonts-dejacu-core
 ##. $CWD/scripts/guitarix;		package_waf guitarix
 ##. $CWD/scripts/am;			package_make am
-done

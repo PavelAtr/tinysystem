@@ -2,5 +2,5 @@ if [ ! -z "${DASH}" ]
 then
     SOURCE=sources/dash-0.5.11
     echo "Building $SOURCE ..." >> $LOG
-    . $CWD/scripts/dash;                    package_make dash 0.5.11 tw1
+    . $CWD/scripts/dash; package_make dash 0.5.11 tw1
 fi

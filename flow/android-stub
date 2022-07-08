@@ -2,5 +2,5 @@ if [ ! -z "${ANDROIDSTUB}" ]
 then
     SOURCE=sources/android-stub
     echo "Building $SOURCE ..." >> $LOG
-    . $CWD/scripts/android-stub;            package_make android-stub 9.0 tw1
+    . $CWD/scripts/android-stub; package_make android-stub 9.0 tw1
 fi

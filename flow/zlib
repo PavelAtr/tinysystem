@@ -2,5 +2,5 @@ if [ ! -z "${ZLIB}" ]
 then
     SOURCE=sources/zlib
     echo "Building $SOURCE ..." >> $LOG
-    . $CWD/scripts/zlib;                    package_make zlib 9.0 tw1
+    . $CWD/scripts/zlib; package_make zlib 9.0 tw1
 fi

@@ -2,5 +2,5 @@ if [ ! -z "${LOGIN}" ]
 then
     SOURCE=sources/login
     echo "Building $SOURCE ..." >> $LOG
-    . $CWD/scripts/login;                   package_make login 0.5 tw1
+    . $CWD/scripts/login; package_make login 0.5 tw1
 fi

@@ -3,7 +3,7 @@ clear_flags
 export CFLAGS="$CFLAGS -I${ROOT}${PREFIX}/include/ncurses -include stub.h"
 
 cd $CWD/$SOURCE
-make clean || true
 ./configure --prefix=$PREFIX --host=$TARGET
+make clean || true
 make -j $NUMJOB
 

@@ -2,5 +2,5 @@ if [ ! -z "${UTILLINUX}" ]
 then
     SOURCE=sources/util-linux-2.36.1
     echo "Building $SOURCE ..." >> $LOG
-    . $CWD/scripts/util-linux;              package_make util-linux 2.36.1 tw1
+    . $CWD/scripts/util-linux; package_make util-linux 2.36.1 tw1
 fi

@@ -1,8 +1,11 @@
 clear_flags
 
-export CFLAGS="$CFLAGS -I$ROOT/$PREFIX/include/python3.9"
 cd $CWD/$SOURCE
+export CFLAGS="$CFLAGS -I$ROOT/$PREFIX/include/python3.9"
+./configure --without-lzma --prefix=$PREFIX \
+--target=$TARGET \
+--oldincludedir=/tmp \
+--with-python=/tinysystem/usr/bin/
 make clean || true
-./configure --without-lzma --prefix=$PREFIX --host=$TARGET
 make -j $NUMJOB
 

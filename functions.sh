@@ -3,7 +3,14 @@ function parse_arg()
     a=${1^^}
     b=${a//"-"/}
     c=${b//"+"/}
-    export $c=1
+    d=${c//"."/}
+    if grep "Created package for $1$" $LOG
+    then
+	echo "$1 alredy builded"
+    else
+        export $d=1
+    fi
+    echo $d
 }
 
 function clear_flags()
@@ -96,6 +103,7 @@ function package_make()
     deps
     pkghead
     pkgpack
+    echo "Created package for $PKGNAME" >> $LOG
 }
 
 
@@ -114,6 +122,7 @@ function package_waf()
     deps
     pkghead
     pkgpack
+    echo "Created package for $PKGNAME" >> $LOG
 }
 
 function package_b2()
@@ -136,6 +145,7 @@ function package_b2()
     deps
     pkghead
     pkgpack
+    echo "Created package for $PKGNAME" >> $LOG
 }
 
 
@@ -155,5 +165,6 @@ function package_meson()
     deps
     pkghead
     pkgpack
+    echo "Created package for $PKGNAME" >> $LOG
 }
 

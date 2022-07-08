@@ -2,5 +2,5 @@ if [ ! -z "${HEADERS}" ]
 then
     SOURCE=sources/headers
     echo "Building $SOURCE ..." >> $LOG
-    . $CWD/scripts/headers;            package_make headers 9.0 tw1
+    . $CWD/scripts/headers; package_make headers 9.0 tw1
 fi

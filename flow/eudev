@@ -2,5 +2,5 @@ if [ ! -z "${EUDEV}" ]
 then
     SOURCE=sources/eudev
     echo "Building $SOURCE ..." >> $LOG
-    . $CWD/scripts/eudev;                   package_make eudev git20220706 tw1
+    . $CWD/scripts/eudev; package_make eudev git20220706 tw1
 fi

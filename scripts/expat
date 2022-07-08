@@ -2,6 +2,7 @@ clear_flags
 
 cd $CWD/$SOURCE/expat
 
+autoreconf -i
 ./configure --prefix=$PREFIX --host=$TARGET \
 --without-docbook
 make clean || true

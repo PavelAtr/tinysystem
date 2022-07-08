@@ -2,5 +2,5 @@ if [ ! -z "${STRACE}" ]
 then
     SOURCE=sources/strace-5.10
     echo "Building $SOURCE ..." >> $LOG
-    . $CWD/scripts/strace;                  package_make strace git20220705 tw1
+    . $CWD/scripts/strace; package_make strace git20220705 tw1
 fi

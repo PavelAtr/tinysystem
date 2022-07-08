@@ -3,10 +3,12 @@ clear_flags
 export LDFLAGS="$LDFLAGS -lintl"
 export CFLAGS="$CFLAGS -fPIC"
 export CXXFLAGS=$CFLAGS
-cd $CWD/$SOURCE
-./configure --prefix=$PREFIX --host=$TARGET --build=$BUILD \
---with-ensurepip=no
+export CONFIG_SITE=$CWD/scripts/python/config_site
 
+cd $CWD/$SOURCE
+
+./configure --prefix=$PREFIX --host=$TARGET --build=$BUILD \
+--with-ensurepip=no --disable-ipv6
 make clean || true
 make -j $NUMJOB
 find . -name _sysconfigdata__linux_$TARGET.py | while read f

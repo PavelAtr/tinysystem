@@ -2,5 +2,5 @@ if [ ! -z "${TAR}" ]
 then
     SOURCE=sources/tar-1.34+dfsg
     echo "Building $SOURCE ..." >> $LOG
-    . $CWD/scripts/tar;                     package_make tar 1.34+dfsg tw1
+    . $CWD/scripts/tar; package_make tar 1.34+dfsg tw1
 fi

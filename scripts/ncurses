@@ -3,8 +3,9 @@ clear_flags
 cd $CWD/$SOURCE
 export CFLAGS="$CFLAGS -fPIC"
 export CXXFLAGS=$CFLAGS
-make clean || true
 export DESTDIR="$CWD/_packages/$ABI/ncurses"
+
 ./configure --prefix=$PREFIX --host=$TARGET \
 --disable-stripping
+make clean || true
 make -j $NUMJOB

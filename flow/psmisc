@@ -2,5 +2,5 @@ if [ ! -z "${PSMISC}" ]
 then
     SOURCE=sources/psmisc-23.4
     echo "Building $SOURCE ..." >> $LOG
-    . $CWD/scripts/psmisc;                  package_make psmisc 23.4 tw1
+    . $CWD/scripts/psmisc; package_make psmisc 23.4 tw1
 fi

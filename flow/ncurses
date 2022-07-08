@@ -2,5 +2,5 @@ if [ ! -z "${NCURSES}" ]
 then
     SOURCE=sources/ncurses-6.2+20201114
     echo "Building $SOURCE ..." >> $LOG
-    . $CWD/scripts/ncurses;                 package_make ncurses 6.2+20201114 tw1
+    . $CWD/scripts/ncurses; package_make ncurses 6.2+20201114 tw1
 fi
