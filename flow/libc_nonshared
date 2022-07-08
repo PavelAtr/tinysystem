@@ -1,0 +1,6 @@
+if [ ! -z "${LIBC_NONSHARED}" ]
+then
+    SOURCE=sources/libc_nonshared
+    echo "Building $SOURCE ..." >> $LOG
+    . $CWD/scripts/libc_nonshared
+fi

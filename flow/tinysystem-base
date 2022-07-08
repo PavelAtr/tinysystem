@@ -1,0 +1,6 @@
+if [ ! -z "${TINYSYSTEMBASE}" ]
+then
+    SOURCE=sources/tinysystem-base
+    echo "Building $SOURCE ..." >> $LOG
+    . $CWD/scripts/tinysystem-base; package_make tinysystem-base 0.5 tw1
+fi

@@ -1,0 +1,10 @@
+clear_flags
+
+export LDFLAGS="$LDFLAGS -lintl"
+cd $CWD/$SOURCE
+./config --prefix=$PREFIX no-asm 
+
+make clean || true
+make -j $NUMJOB
+sed -i '/DESTDIR=.*/d' Makefile
+

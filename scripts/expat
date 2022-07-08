@@ -1,0 +1,8 @@
+clear_flags
+
+cd $CWD/$SOURCE/expat
+
+./configure --prefix=$PREFIX --host=$TARGET \
+--without-docbook
+make clean || true
+make -j $NUMJOB

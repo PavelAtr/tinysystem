@@ -1,0 +1,8 @@
+clear_flags
+
+export CFLAGS="$CFLAGS -I$ROOT/$PREFIX/include/python3.9"
+cd $CWD/$SOURCE
+make clean || true
+./configure --without-lzma --prefix=$PREFIX --host=$TARGET
+make -j $NUMJOB
+

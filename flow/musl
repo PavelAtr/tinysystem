@@ -1,0 +1,6 @@
+if [ ! -z "${MUSL}" ]
+then
+    SOURCE=sources/musl-1.2.2
+    echo "Building $SOURCE ..." >> $LOG
+    . $CWD/scripts/musl
+fi

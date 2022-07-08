@@ -1,0 +1,9 @@
+clear_flags
+
+cd $CWD/$SOURCE
+
+[ "$TARGET" == "x86_64-linux-android" ] && export TOOLSET=amd64
+[ "$TARGET" == "aarch64-linux-android" ] && export TOOLSET=arm64
+export BOOST_BUILD_PATH=$CWD/scripts/b2_cross
+
+cd $CWD/$SOURCE

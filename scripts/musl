@@ -1,0 +1,13 @@
+clear_flags
+
+. $CWD/10_cross_$ABI.cfg
+
+export DESTDIR=$STATICROOT
+
+cd $CWD/$SOURCE
+make clean || true
+./configure --prefix=$PREFIX --host=$TARGET
+make -j $NUMJOB
+make install
+
+. $CWD/10_cross_${ABI}_ndk.cfg

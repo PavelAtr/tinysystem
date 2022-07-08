@@ -1,0 +1,50 @@
+#!/bin/bash
+
+if [ -z "$1" -o -z "$2" ]
+then
+    echo "Usage: $0 <package_path> <ROOT>"
+    exit 1
+fi
+
+[ -z "$LDD" ] && LDD=ldd
+
+PKGPATH=$1
+ROOT=$2
+PKGNAME=$(basename $PKGPATH)
+
+if ! cd $PKGPATH
+then
+    echo "Cannot cd $PKGPATH"
+    exit 1
+fi
+
+echo -n "" > /tmp/bindeps.rawlibs
+find . -type f | while read f
+do
+    if file $f | grep ELF >/dev/null 2>&1
+    then
+        $LDD $f | awk '{print $3}' >> /tmp/bindeps.rawlibs
+    fi
+done
+
+echo -n "" > /tmp/bindeps.pkgraw
+cat /tmp/bindeps.rawlibs | grep "\.so" | sort | uniq | while read lib
+do
+    # Some dirty, but have problems with //
+    [ -z "$lib" ] && continue
+    lib=$(echo $lib | sed 's/\/\//\//g')
+    cleanlib=$(echo ${lib/$ROOT//} | sed 's/\/\//\//g')
+    grep "$cleanlib" $ROOT/var/lib/packages/* | while read str
+    do
+        echo $str | awk -F ':' '{print $1}' >> /tmp/bindeps.pkgraw
+    done
+done
+
+echo -n "$PKGNAME:"
+
+cat /tmp/bindeps.pkgraw | sort | uniq | while read pkgraw
+do
+    pkg=$(basename $pkgraw .files)
+    [ "$PKGNAME" != "$pkg" ] && echo -n " $pkg"
+done
+echo ""

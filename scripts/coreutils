@@ -1,0 +1,11 @@
+clear_flags
+
+export CFLAGS="$CFLAGS -DHAVE_RPL -include linux/in6.h -include linux/in.h -include stub.h -include bits/struct_file.h"
+cd $CWD/$SOURCE
+make clean || true
+FORCE_UNSAFE_CONFIGURE=1 \
+./configure --prefix=$PREFIX \
+--host=$TARGET
+
+make -j $NUMJOB
+

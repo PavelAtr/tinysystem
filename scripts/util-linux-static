@@ -1,0 +1,39 @@
+clear_flags
+
+. $CWD/10_cross_$ABI.cfg
+
+OLDPREFIX=$PREFIX
+mkdir -p ${STATICROOT}${OLDPREFIX}/include/sys/
+install /usr/$TARGET2/include/sys/syslog.h ${STATICROOT}${OLDPREFIX}/include/sys/
+mkdir -p ${STATICROOT}${OLDPREFIX}/include/bits
+install /usr/$TARGET2/include/bits/syslog-path.h ${STATICROOT}${OLDPREFIX}/include/bits/
+
+export PREFIX="${OLDPREFIX}/static"
+export LDFLAGS="-L${STATICROOT}${OLDPREFIX}/lib -lc_nonshared"
+export CFLAGS="-I${STATICROOT}${OLDPREFIX}/include -DGLOB_NOMAGIC=0 -D__THROW='' -fPIC"
+export CC="$CC -static"
+export CCLD="$CC -static"
+
+cd $CWD/$SOURCE
+make clean || true
+./configure --prefix=$PREFIX --host=$TARGET \
+  --disable-all-programs \
+  --enable-losetup \
+  --enable-mount \
+  --enable-umount \
+  --enable-fdisk \
+  --enable-sfdisk \
+  --enable-blkid \
+  --enable-nsenter \
+  --enable-unshare \
+  --enable-libmount \
+  --enable-libblkid \
+  --enable-libsmartcols \
+  --enable-shared=no
+
+sed -i 's/-static\ |/-staticdummy\ |/g' libtool
+
+make V=1 -j $NUMJOB
+
+. $CWD/10_cross_${ABI}_ndk.cfg
+export PREFIX=$OLDPREFIX

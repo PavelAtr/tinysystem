@@ -1,0 +1,21 @@
+clear_flags
+
+export CFLAGS="$CFLAGS -include stub.h -I$ROOT/$PREFIX/include/sys -D__THROW='' -fPIC -Dversionsort=alphasort -DCLONE_NEWNS=0x00020000 -DHAVE_RPL -include stub.h -DTINYSYSTEM"
+export LDFLAGS="$LDFLAGS -lutil"
+cd $CWD/$SOURCE
+make clean || true
+./configure --prefix=$PREFIX --host=$TARGET \
+  --enable-libuuid \
+  --disable-eject \
+  --disable-nls \
+  --without-udev \
+  --without-slang \
+  --without-tinfo \
+  --disable-widechar \
+  --without-ncursesw \
+  --without-ncurses \
+  --disable-lsirq
+
+echo "#undef HAVE_USELOCALE" >> config.h
+
+make -j $NUMJOB

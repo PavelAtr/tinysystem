@@ -1,0 +1,9 @@
+clear_flags
+
+export CFLAGS="$CFLAGS -U__ANDROID__"
+#export LDFLAGS="$LDFLAGS -llzma_dist"
+cd $CWD/$SOURCE
+#autoreconf -i
+./configure --prefix=$PREFIX --host=$TARGET --without-lzma
+make clean || true
+make -j $NUMJOB

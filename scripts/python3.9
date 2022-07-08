@@ -1,0 +1,17 @@
+clear_flags
+
+export LDFLAGS="$LDFLAGS -lintl"
+export CFLAGS="$CFLAGS -fPIC"
+export CXXFLAGS=$CFLAGS
+cd $CWD/$SOURCE
+./configure --prefix=$PREFIX --host=$TARGET --build=$BUILD \
+--with-ensurepip=no
+
+make clean || true
+make -j $NUMJOB
+find . -name _sysconfigdata__linux_$TARGET.py | while read f
+do
+    dir=$(dirname $f)
+    name=$(basename $f)
+    cp  $f $dir/_sysconfigdata__$TARGET.py
+done

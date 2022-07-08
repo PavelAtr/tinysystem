@@ -1,0 +1,6 @@
+if [ ! -z "${COREUTILS}" ]
+then
+    SOURCE=sources/coreutils-8.32
+    echo "Building $SOURCE ..." >> $LOG
+    . $CWD/scripts/coreutils;               package_make coreutils 8.32 tw1
+fi

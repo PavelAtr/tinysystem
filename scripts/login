@@ -1,0 +1,5 @@
+clear_flags
+
+cd $CWD/$SOURCE
+make clean || true
+make

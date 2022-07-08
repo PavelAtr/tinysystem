@@ -1,0 +1,10 @@
+clear_flags
+
+export CFLAGS="$CFLAGS -D__MUSL__"
+cd $CWD/$SOURCE
+./configure --prefix=$PREFIX --host=$TARGET
+make clean || true
+make -j $NUMJOB
+
+
+

@@ -1,0 +1,18 @@
+clear_flags
+
+export CPP_FOR_BUILD=$CPP
+export CC_FOR_BUILD=$CC
+export CFLAGS="$CFLAGS -DTINYSYSTEM"
+
+cd $CWD/$SOURCE
+make clean || true
+./configure --prefix=$PREFIX \
+--host=$TARGET \
+--without-gcov \
+--without-libdw \
+--without-libunwind \
+--without-libiberty \
+--enable-mpers=no \
+--disable-gcc-Werror
+
+make -j $NUMJOB

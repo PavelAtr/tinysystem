@@ -1,0 +1,18 @@
+#!/bin/bash
+
+if [ -z "$1" ]
+then
+    echo "Usage: $0 <package_path>"
+    exit 1
+fi
+PKGPATH=$1
+
+if ! cd $PKGPATH 
+then
+    echo "Cannot cd $PKGPATH"
+    exit 1
+fi
+find . -type f | grep -v "var\/lib\/packages" | while read f
+do
+    md5sum "$f"
+done

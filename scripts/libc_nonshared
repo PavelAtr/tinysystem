@@ -1,0 +1,12 @@
+clear_flags
+
+. $CWD/10_cross_$ABI.cfg
+
+export DESTDIR=$STATICROOT
+
+cd $CWD/$SOURCE
+$CC -c libc_nonshared.c
+ar -crs libc_nonshared.a libc_nonshared.o
+install libc_nonshared.a ${STATICROOT}${PREFIX}/lib/
+
+. $CWD/10_cross_${ABI}_ndk.cfg
