@@ -1,0 +1,6 @@
+if [ ! -z "${WAYLANDPROTOCOLS}" ]
+then
+    SOURCE=sources/wayland-protocols-1.26
+    echo "Building $SOURCE ..." >> $LOG
+    . $CWD/scripts/wayland-protocols; package_meson wayland-protocols 1.26 tw1
+fi

@@ -1,0 +1,6 @@
+if [ ! -z "${LIBX11}" ]
+then
+    SOURCE=sources/libx11-1.7.2
+    echo "Building $SOURCE ..." >> $LOG
+    . $CWD/scripts/libx11; package_make libx11 1.7.2 tw1
+fi

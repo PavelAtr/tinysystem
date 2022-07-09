@@ -1,0 +1,9 @@
+clear_flags
+
+cd $CWD/$SOURCE
+rm -r _build || true
+meson --prefix=$PREFIX \
+--cross-file $CWD/scripts/meson_cross/$ABI.cfg \
+_build  .
+
+ninja -C _build

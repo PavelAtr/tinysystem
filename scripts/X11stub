@@ -1,0 +1,4 @@
+clear_flags
+
+cd $CWD/$SOURCE
+

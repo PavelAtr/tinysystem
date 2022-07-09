@@ -62,11 +62,28 @@ mkdir -p ${STATICROOT}${PREFIX}
 . $CWD/flow/libbsd
 . $CWD/flow/android-videolibs
 
-######. $CWD/scripts/X11headers;		package_make X11headers
-######. $CWD/scripts/xcb-proto;		package_make xcb-proto
-######. $CWD/scripts/libxau;		package_make libxau
-######. $CWD/scripts/libxcb;		package_make libxcb
-######. $CWD/scripts/libx11;		package_make libx11
+. $CWD/flow/X11stub
+. $CWD/flow/xcb-proto
+. $CWD/flow/libxau
+. $CWD/flow/xorg-macros
+. $CWD/flow/libxcb
+. $CWD/flow/libx11
+. $CWD/flow/libxext
+. $CWD/flow/libxinerama
+. $CWD/flow/libxrender
+. $CWD/flow/libxfixes
+. $CWD/flow/libxi
+. $CWD/flow/libxtst
+
+
+
+##. $CWD/scripts/freetype;		package_make freetype
+##. $CWD/scripts/libxfixes;		package_make libfixes
+. $CWD/flow/libxkbcommon
+. $CWD/flow/wayland
+. $CWD/flow/wayland-protocols
+. $CWD/flow/weston
+
 ##. $CWD/scripts/libogg;			package_make libogg
 ##. $CWD/scripts/lame;			package_make lame
 ##. $CWD/scripts/flac;			package_make flac
@@ -88,13 +105,6 @@ mkdir -p ${STATICROOT}${PREFIX}
 ##. $CWD/scripts/libpng1.6;		package_make libpng1.6
 ##. $CWD/scripts/pixman;			package_make pixman
 ##. $CWD/scripts/brotli;			package_make brotli
-##. $CWD/scripts/freetype;		package_make freetype
-##. $CWD/scripts/libxext;		package_make libxext
-##. $CWD/scripts/libxinerama;		package_make libxinerama
-##. $CWD/scripts/libxrender;		package_make libxrender
-##. $CWD/scripts/libxfixes;		package_make libfixes
-##. $CWD/scripts/libxi;			package_make libxi
-##. $CWD/scripts/libxtst;		package_make libxtst
 ##. $CWD/scripts/libestr;		package_make libestr
 ##. $CWD/scripts/libfastjson;		package_make libfastjson
 ##. $CWD/scripts/libgpg-error;		package_make libgpg-error

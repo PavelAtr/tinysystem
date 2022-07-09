@@ -1,0 +1,6 @@
+if [ ! -z "${LIBXCB}" ]
+then
+    SOURCE=sources/libxcb-1.14
+    echo "Building $SOURCE ..." >> $LOG
+    . $CWD/scripts/libxcb; package_make libxcb 1.14 tw1
+fi

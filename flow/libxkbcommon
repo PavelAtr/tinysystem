@@ -1,0 +1,6 @@
+if [ ! -z "${LIBXKBCOMMON}" ]
+then
+    SOURCE=sources/libxkbcommon-1.0.3
+    echo "Building $SOURCE ..." >> $LOG
+    . $CWD/scripts/libxkbcommon; package_meson libxkbcommon 1.0.3 tw1
+fi
