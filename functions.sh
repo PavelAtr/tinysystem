@@ -4,13 +4,14 @@ function parse_arg()
     b=${a//"-"/}
     c=${b//"+"/}
     d=${c//"."/}
-    if grep "Created package for $1$" $LOG
+    echo $d
+    if grep "Created package for $1$" >/dev/null 2>&1 $LOG
     then
-	echo "$1 alredy builded"
+	echo "$1 alredy builded ($LOG)"
     else
         export $d=1
     fi
-    echo $d
+
 }
 
 function clear_flags()

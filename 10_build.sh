@@ -76,9 +76,10 @@ mkdir -p ${STATICROOT}${PREFIX}
 . $CWD/flow/libxtst
 
 
+##. $CWD/scripts/libpng1.6;		package_make libpng1.6
+##. $CWD/scripts/pixman;			package_make pixman
 
-##. $CWD/scripts/freetype;		package_make freetype
-##. $CWD/scripts/libxfixes;		package_make libfixes
+
 . $CWD/flow/libxkbcommon
 . $CWD/flow/wayland
 . $CWD/flow/wayland-protocols
@@ -93,7 +94,7 @@ mkdir -p ${STATICROOT}${PREFIX}
 ##. $CWD/scripts/libtool;		package_make libtool
 ##. $CWD/scripts/libsamplerate;		package_make libsamplerate
 ##. $CWD/scripts/vamp-plugin-sdk;	package_make vamp-plugin-sdk
-
+##. $CWD/scripts/freetype;		package_make freetype
 ##. $CWD/scripts/alsa-lib;		package_make alsa-lib
 ##. $CWD/scripts/opensles-alsa;		package_make opensles-alsa
 ##. $CWD/scripts/libsigc++;		package_make libsigc++
@@ -102,8 +103,6 @@ mkdir -p ${STATICROOT}${PREFIX}
 ##. $CWD/scripts/libbthread;		package_make libbthread
 ##. $CWD/scripts/jack2;			package_waf jack2
 ##. $CWD/scripts/glibmm2.4;		package_make glibmm2.4
-##. $CWD/scripts/libpng1.6;		package_make libpng1.6
-##. $CWD/scripts/pixman;			package_make pixman
 ##. $CWD/scripts/brotli;			package_make brotli
 ##. $CWD/scripts/libestr;		package_make libestr
 ##. $CWD/scripts/libfastjson;		package_make libfastjson
