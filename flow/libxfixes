@@ -1,0 +1,6 @@
+if [ ! -z "${LIBXFIXES}" ]
+then
+    SOURCE=sources/libxfixes-5.0.3
+    echo "Building $SOURCE ..." >> $LOG
+    . $CWD/scripts/libxi; package_make libxfixes 5.0.3 tw1
+fi

@@ -1,0 +1,8 @@
+clear_flags
+
+cd $CWD/$SOURCE
+./configure --prefix=$PREFIX --target=$TARGET \
+--disable-umockdev
+make clean || true
+make -j $NUMJOB
+

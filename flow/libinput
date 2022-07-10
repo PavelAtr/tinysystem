@@ -1,0 +1,6 @@
+if [ ! -z "${LIBINPUT}" ]
+then
+    SOURCE=sources/libinput-1.16.4
+    echo "Building $SOURCE ..." >> $LOG
+    . $CWD/scripts/libinput; package_meson libinput 1.16.4 tw1
+fi

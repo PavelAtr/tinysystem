@@ -1,0 +1,6 @@
+if [ ! -z "${WESTON}" ]
+then
+    SOURCE=sources/weston-10.0.1
+    echo "Building $SOURCE ..." >> $LOG
+    . $CWD/scripts/weston; package_meson weston 10.0.1 tw1
+fi

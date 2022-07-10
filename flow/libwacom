@@ -1,0 +1,6 @@
+if [ ! -z "${LIBWACOM}" ]
+then
+    SOURCE=sources/libwacom
+    echo "Building $SOURCE ..." >> $LOG
+    . $CWD/scripts/libwacom; package_meson libwacom git20220710 tw1
+fi

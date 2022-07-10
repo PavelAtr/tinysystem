@@ -1,0 +1,6 @@
+if [ ! -z "${LIBXI}" ]
+then
+    SOURCE=sources/libxi-1.7.10
+    echo "Building $SOURCE ..." >> $LOG
+    . $CWD/scripts/libxi; package_make libxi 1.7.10 tw1
+fi
