@@ -1,0 +1,6 @@
+if [ ! -z "${LIBEVDEV}" ]
+then
+    SOURCE=sources/libevdev-1.11.0+dfsg
+    echo "Building $SOURCE ..." >> $LOG
+    . $CWD/scripts/libevdev; package_make libevdev 1.11.0+dfsg tw1
+fi

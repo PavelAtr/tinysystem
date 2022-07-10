@@ -1,0 +1,6 @@
+if [ ! -z "${LIBPNG16}" ]
+then
+    SOURCE=sources/libpng1.6-1.6.37
+    echo "Building $SOURCE ..." >> $LOG
+    . $CWD/scripts/libpng1.6; package_make libpng1.6 1.6.37 tw1
+fi

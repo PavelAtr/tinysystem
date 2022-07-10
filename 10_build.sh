@@ -76,13 +76,22 @@ mkdir -p ${STATICROOT}${PREFIX}
 . $CWD/flow/libxtst
 
 
-##. $CWD/scripts/libpng1.6;		package_make libpng1.6
-##. $CWD/scripts/pixman;			package_make pixman
 
 
 . $CWD/flow/libxkbcommon
 . $CWD/flow/wayland
 . $CWD/flow/wayland-protocols
+. $CWD/flow/libpng1.6
+. $CWD/flow/pixman
+. $CWD/flow/mtdev
+. $CWD/flow/libevdev
+. $CWD/flow/python-libevdev
+. $CWD/flow/pyudev
+. $CWD/flow/libwacom
+. $CWD/flow/libgudev
+
+. $CWD/flow/libinput
+
 . $CWD/flow/weston
 
 ##. $CWD/scripts/libogg;			package_make libogg

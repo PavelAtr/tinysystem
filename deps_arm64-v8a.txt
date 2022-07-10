@@ -1,0 +1,54 @@
+android-lf:
+android-stub:
+android-videolibs:
+boost1.74: android-stub icu libc++_shared
+coreutils:
+dash:
+eudev:
+expat:
+glib2.0: libffi
+headers:
+icu: android-stub libc++_shared
+libarchive: glib2.0 libxml2 openssl
+libbsd: libmd
+libc++_shared:
+libevdev:
+libffi:
+libgudev: glib2.0 libffi
+libmd:
+libpng1.6:
+libwacom: glib2.0 libffi libgudev
+libx11: libxau libxcb
+libxau:
+libxcb: libxau
+libxcrypt:
+libxext: libx11 libxau libxcb
+libxfixes: libx11 libxau libxcb
+libxinerama: libx11 libxau libxcb libxext
+libxi: libx11 libxau libxcb libxext
+libxkbcommon: libffi libxau libxcb libxml2 wayland
+libxml2:
+libxrender: libx11 libxau libxcb
+libxtst: libx11 libxau libxcb libxext libxi
+login:
+mtdev:
+ncurses:
+openssl: glib2.0
+pcre3: libc++_shared
+pixman:
+psmisc:
+python3.9: android-stub expat glib2.0 libffi libxcrypt openssl util-linux
+python-libevdev:
+pyudev:
+strace:
+taglib: android-stub icu libc++_shared
+tar:
+tinysystem-base:
+util-linux-static:
+util-linux: android-stub
+wayland-protocols:
+wayland: expat libffi libxml2
+X11stub:
+xcb-proto:
+xorg-macros:
+zlib:

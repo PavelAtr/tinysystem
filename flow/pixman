@@ -1,0 +1,6 @@
+if [ ! -z "${PIXMAN}" ]
+then
+    SOURCE=sources/pixman-0.40.0
+    echo "Building $SOURCE ..." >> $LOG
+    . $CWD/scripts/pixman; package_make pixman 0.40.0 tw1
+fi

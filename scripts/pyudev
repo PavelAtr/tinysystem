@@ -1,0 +1,10 @@
+clear_flags
+
+cd $CWD/$SOURCE
+
+D=${CWD}/_packages/${ABI}/pyudev/${APP_PATH}
+mkdir -p $D
+python3 ./setup.py build
+python3 ./setup.py install --prefix=$D
+
+export KEEP_PKGDIR=1

@@ -1,0 +1,6 @@
+if [ ! -z "${PYUDEV}" ]
+then
+    SOURCE=sources/pyudev-0.22.0
+    echo "Building $SOURCE ..." >> $LOG
+    . $CWD/scripts/pyudev; package_make pyudev 0.22.0 tw1
+fi

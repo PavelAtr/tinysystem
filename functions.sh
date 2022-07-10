@@ -88,13 +88,19 @@ function pkgpack()
     tar -zcvf ../${PKGNAME}_${PKGVERSION}_${PKGBUILD}_${ABI}.tar.gz .
 }
 
+function clean_pkgdir()
+{
+    [ -z "$KEEP_PKGDIR"  ] && rm -r $PKGDIR || true
+    unset $KEEP_PKGDIR
+}
+
 function package_make()
 {
     export PKGNAME=$1
     export PKGVERSION=$2
     export PKGBUILD=$3
     PKGDIR=$CWD/_packages/$ABI/$PKGNAME
-    rm -r $PKGDIR || true
+    clean_pkgdir
     mkdir -p ${PKGDIR}${SHORTPREFIX}/var/lib/packages
     export DESTDIR=$PKGDIR
     make install || true
@@ -114,7 +120,7 @@ function package_waf()
     export PKGVERSION=$2
     export PKGBUILD=$3
     PKGDIR=$CWD/_packages/$ABI/$PKGNAME
-    rm -r $PKGDIR || true
+    clean_pkgdir
     mkdir -p ${PKGDIR}${SHORTPREFIX}/var/lib/packages
     ./waf -v install --destdir=$PKGDIR || true
     pkgstrip
@@ -132,7 +138,7 @@ function package_b2()
     export PKGVERSION=$2
     export PKGBUILD=$3
     PKGDIR=$CWD/_packages/$ABI/$PKGNAME
-    rm -r $PKGDIR || true
+    clean_pkgdir
     mkdir -p ${PKGDIR}${SHORTPREFIX}/var/lib/packages
     OLDPATH=$PATH
     export PATH="$TOOLCHAIN/bin:$PATH"
@@ -156,7 +162,7 @@ function package_meson()
     export PKGVERSION=$2
     export PKGBUILD=$3
     PKGDIR=$CWD/_packages/$ABI/$PKGNAME
-    rm -r $PKGDIR || true
+    clean_pkgdir
     mkdir -p ${PKGDIR}${SHORTPREFIX}/var/lib/packages
     export DESTDIR=$PKGDIR
     ninja -C _build install || true

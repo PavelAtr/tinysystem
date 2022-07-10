@@ -1,0 +1,6 @@
+if [ ! -z "${PYTHONLIBEVDEV}" ]
+then
+    SOURCE=sources/python-libevdev-0.5
+    echo "Building $SOURCE ..." >> $LOG
+    . $CWD/scripts/python-libevdev; package_make python-libevdev tw1
+fi

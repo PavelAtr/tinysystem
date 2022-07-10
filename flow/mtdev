@@ -1,0 +1,6 @@
+if [ ! -z "${MTDEV}" ]
+then
+    SOURCE=sources/mtdev-1.1.6
+    echo "Building $SOURCE ..." >> $LOG
+    . $CWD/scripts/mtdev; package_make mtdev 1.1.6 tw1
+fi

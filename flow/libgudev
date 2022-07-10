@@ -1,0 +1,6 @@
+if [ ! -z "${LIBGUDEV}" ]
+then
+    SOURCE=sources/libgudev-234
+    echo "Building $SOURCE ..." >> $LOG
+    . $CWD/scripts/libgudev; package_make libgudev 234 tw1
+fi

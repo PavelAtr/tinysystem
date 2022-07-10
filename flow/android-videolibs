@@ -2,5 +2,5 @@ if [ ! -z "${ANDROIDVIDEOLIBS}" ]
 then
     SOURCE=sources/android-videolibs-9.0
     echo "Building $SOURCE ..." >> $LOG
-    . $CWD/scripts/android-videolibs; package_make android-videolibs 10.0 tw1
+    . $CWD/scripts/android-videolibs; package_make android-videolibs 9.0 tw1
 fi

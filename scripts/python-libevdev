@@ -1,0 +1,10 @@
+clear_flags
+
+cd $CWD/$SOURCE
+
+D=${CWD}/_packages/${ABI}/python-libevdev/${APP_PATH}
+mkdir -p $D
+./setup.py build
+./setup.py install --prefix=$D
+
+export KEEP_PKGDIR=1
