@@ -1,0 +1,6 @@
+if [ ! -z "${LIBSIGC20}" ]
+then
+    SOURCE=sources/libsigc++-2.0-2.10.4
+    echo "Building $SOURCE ..." >> $LOG
+    . $CWD/scripts/libsigc++-2.0; package_make libsigc++-2.0 2.10.4 tw1
+fi

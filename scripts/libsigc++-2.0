@@ -1,0 +1,8 @@
+clear_flags
+cd $CWD/$SOURCE
+
+LDFLAGS="$LDFLAGS -static-libstdc++"
+#./autogen.sh
+./configure --prefix=$PREFIX --build=$BUILD --host=$TARGET
+make clean || true
+make -j $NUMJOB

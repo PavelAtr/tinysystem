@@ -1,0 +1,6 @@
+if [ ! -z "${GOBJECTINTROSPECTION}" ]
+then
+    SOURCE=sources/gobject-introspection-1.66.1
+    echo "Building $SOURCE ..." >> $LOG
+    . $CWD/scripts/gobject-introspection; package_meson gobject-introspection 1.66.1 tw1
+fi

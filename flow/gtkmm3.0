@@ -1,0 +1,6 @@
+if [ ! -z "${GTKMM30}" ]
+then
+    SOURCE=sources/gtkmm3.0-3.24.2
+    echo "Building $SOURCE ..." >> $LOG
+    . $CWD/scripts/gtkmm3.0; package_make gtkmm3.0 3.24.2 tw1
+fi

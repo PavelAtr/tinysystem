@@ -2,7 +2,7 @@ clear_flags
 
 cd $CWD/$SOURCE
 
-D=${CWD}/_packages/${ABI}/python-libevdev/${APP_PATH}
+D=${CWD}/_packages/${ABI}/python-libevdev/${APP_PATH}/usr
 mkdir -p $D
 ./setup.py build
 ./setup.py install --prefix=$D

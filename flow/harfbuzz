@@ -1,0 +1,6 @@
+if [ ! -z "${HARFBUZZ}" ]
+then
+    SOURCE=sources/harfbuzz-2.7.4
+    echo "Building $SOURCE ..." >> $LOG
+    . $CWD/scripts/harfbuzz; package_make harfbuzz 2.7.4 tw1
+fi

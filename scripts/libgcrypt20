@@ -1,0 +1,8 @@
+clear_flags
+
+cd $CWD/$SOURCE
+make clean || true
+./configure --prefix=$PREFIX --host=$TARGET \
+--with-libgpg-error-prefix=$ROOT/$PREFIX
+make -j $NUMJOB
+

@@ -1,0 +1,6 @@
+if [ ! -z "${ATSPI2CORE}" ]
+then
+    SOURCE=sources/at-spi2-core-2.38.0
+    echo "Building $SOURCE ..." >> $LOG
+    . $CWD/scripts/at-spi2-core; package_meson at-spi2-core-2.38.0 tw1
+fi

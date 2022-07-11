@@ -1,0 +1,6 @@
+if [ ! -z "${FREETYPE}" ]
+then
+    SOURCE=sources/freetype-2.10.4+dfsg
+    echo "Building $SOURCE ..." >> $LOG
+    . $CWD/scripts/freetype; package_make freetype 2.10.4+dfsg tw1
+fi

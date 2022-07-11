@@ -1,0 +1,6 @@
+if [ ! -z "${LIBDATRIE}" ]
+then
+    SOURCE=sources/libdatrie-0.2.13
+    echo "Building $SOURCE ..." >> $LOG
+    . $CWD/scripts/libdatrie; package_make libdatrie 0.2.13 tw1
+fi

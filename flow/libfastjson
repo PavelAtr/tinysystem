@@ -1,0 +1,6 @@
+if [ ! -z "${LIBFASTJSON}" ]
+then
+    SOURCE=sources/libfastjson-0.99.9
+    echo "Building $SOURCE ..." >> $LOG
+    . $CWD/scripts/libfastjson 0.99.9; package_make libfastjson 0.99.9 tw1
+fi

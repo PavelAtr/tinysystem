@@ -1,0 +1,6 @@
+if [ ! -z "${LIBKSBA}" ]
+then
+    SOURCE=sources/libksba-1.5.0
+    echo "Building $SOURCE ..." >> $LOG
+    . $CWD/scripts/libksba; package_make libksba 1.5.0 tw1
+fi

@@ -1,0 +1,6 @@
+if [ ! -z "${PANGO10}" ]
+then
+    SOURCE=sources/pango1.0-1.46.2
+    echo "Building $SOURCE ..." >> $LOG
+    . $CWD/scripts/pango1.0; package_meson pango1.0 1.46.2 tw1
+fi

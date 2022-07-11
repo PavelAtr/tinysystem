@@ -1,0 +1,6 @@
+if [ ! -z "${SHAREDMIMEINFO}" ]
+then
+    SOURCE=sources/shared-mime-info-2.0
+    echo "Building $SOURCE ..." >> $LOG
+    . $CWD/scripts/shared-mime-info; package_meson shared-mime-info 2.0 tw1
+fi

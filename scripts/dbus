@@ -1,0 +1,10 @@
+clear_flags
+
+cd $CWD/$SOURCE
+export DBUS_X_CFLAGS=""
+export X_CFLAGS=""
+./configure --prefix=$PREFIX --target=$TARGET --build=$BUILD \
+--disable-tests
+make clean || true
+make -j $NUMJOB
+

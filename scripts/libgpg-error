@@ -1,0 +1,13 @@
+clear_flags
+
+cd $CWD/$SOURCE
+export CFLAGS="$CFLAGS -include bthread.h -pedantic"
+export LDFLAGS="$LDFLAGS -lbthread"
+
+make clean || true
+./autogen.sh
+./configure --prefix=$PREFIX --host=$TARGETGNU \
+--disable-doc \
+--disable-tests
+
+export PKGCOMMAND="cp $APP_PATH/usr/lib/pkgconfig/gpg-error.pc $APP_PATH/usr/lib/pkgconfig/libgpg-error.pc"

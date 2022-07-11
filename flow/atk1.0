@@ -1,0 +1,6 @@
+if [ ! -z "${ATK10}" ]
+then
+    SOURCE=sources/atk1.0-2.36.0
+    echo "Building $SOURCE ..." >> $LOG
+    . $CWD/scripts/atk1.0; package_meson atk1.0 2.36.0 tw1
+fi
