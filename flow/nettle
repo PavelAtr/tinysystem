@@ -1,0 +1,6 @@
+if [ ! -z "${NETTLE}" ]
+then
+    SOURCE=sources/nettle-3.7.3
+    echo "Building $SOURCE ..." >> $LOG
+    . $CWD/scripts/nettle; package_make nettle 3.7.3 tw1
+fi

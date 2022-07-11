@@ -1,0 +1,6 @@
+if [ ! -z "${LIBTASN16}" ]
+then
+    SOURCE=sources/libtasn1-6-4.16.0
+    echo "Building $SOURCE ..." >> $LOG
+    . $CWD/scripts/libtasn1-6; package_make libtasn1-6 4.16.0 tw1
+fi

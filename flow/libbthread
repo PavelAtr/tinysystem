@@ -1,0 +1,6 @@
+if [ ! -z "${LIBBTHREAD}" ]
+then
+    SOURCE=sources/libbthread
+    echo "Building $SOURCE ..." >> $LOG
+    . $CWD/scripts/libbthread; package_make libbthread git20220601 tw1
+fi

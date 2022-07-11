@@ -1,0 +1,6 @@
+if [ ! -z "${GTK20}" ]
+then
+    SOURCE=sources/gtk+2.0-2.24.33
+    echo "Building $SOURCE ..." >> $LOG
+    . $CWD/scripts/gtk+2.0; package_make gtk+2.0 2.24.33 tw1
+fi

@@ -1,0 +1,6 @@
+if [ ! -z "${DBUS}" ]
+then
+    SOURCE=sources/dbus-1.12.20
+    echo "Building $SOURCE ..." >> $LOG
+    . $CWD/scripts/dbus; package_make dbus 1.12.20 tw1
+fi

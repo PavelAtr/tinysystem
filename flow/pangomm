@@ -1,0 +1,6 @@
+if [ ! -z "${PANGOMM}" ]
+then
+    SOURCE=sources/pangomm-2.42.1
+    echo "Building $SOURCE ..." >> $LOG
+    . $CWD/scripts/pangomm; package_make pangomm 2.42.1 tw1
+fi

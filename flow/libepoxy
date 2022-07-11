@@ -1,0 +1,6 @@
+if [ ! -z "${LIBEPOXY}" ]
+then
+    SOURCE=sources/libepoxy-1.5.5
+    echo "Building $SOURCE ..." >> $LOG
+    . $CWD/scripts/libepoxy; package_meson libepoxy-1.5.5 tw1
+fi

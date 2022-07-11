@@ -1,0 +1,8 @@
+clear_flags
+
+cd $CWD/$SOURCE
+./bootstrap
+./configure --prefix=$PREFIX --host=$TARGET
+make clean || true
+make -j $NUMJOB
+

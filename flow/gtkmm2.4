@@ -1,0 +1,6 @@
+if [ ! -z "${GTKMM24}" ]
+then
+    SOURCE=sources/gtkmm2.4-2.24.5
+    echo "Building $SOURCE ..." >> $LOG
+    . $CWD/scripts/gtkmm2.4; package_make gtkmm2.4 2.24.5 tw1
+fi

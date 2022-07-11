@@ -94,6 +94,15 @@ function clean_pkgdir()
     unset $KEEP_PKGDIR
 }
 
+function pkgcommand()
+{
+    curdir=$(pwd)
+    cd $PKGDIR
+    $PKGCOMMAND
+    unset PKGCOMMAND
+    cd $curdir
+}
+
 function package_make()
 {
     export PKGNAME=$1
@@ -104,6 +113,7 @@ function package_make()
     mkdir -p ${PKGDIR}${SHORTPREFIX}/var/lib/packages
     export DESTDIR=$PKGDIR
     make install || true
+    pkgcommand
     pkgstrip
     filelist
     copytoroot

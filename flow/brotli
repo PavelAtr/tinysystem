@@ -1,0 +1,6 @@
+if [ ! -z "${BROTLI}" ]
+then
+    SOURCE=sources/brotli-1.0.9
+    echo "Building $SOURCE ..." >> $LOG
+    . $CWD/scripts/brotli; package_make brotli 1.0.9 tw1
+fi

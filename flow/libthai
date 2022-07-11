@@ -1,0 +1,6 @@
+if [ ! -z "${LIBTHAI}" ]
+then
+    SOURCE=sources/libthai-0.1.28
+    echo "Building $SOURCE ..." >> $LOG
+    . $CWD/scripts/libthai; package_make libthai 0.1.28 tw1
+fi

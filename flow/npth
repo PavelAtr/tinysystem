@@ -1,0 +1,6 @@
+if [ ! -z "${NPTH}" ]
+then
+    SOURCE=sources/npth-1.6
+    echo "Building $SOURCE ..." >> $LOG
+    . $CWD/scripts/npth; package_make npth 1.6 tw1
+fi

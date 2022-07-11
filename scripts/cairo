@@ -1,0 +1,13 @@
+clear_flags
+
+cd $CWD/$SOURCE
+export CFLAGS="$CFLAGS -DCAIRO_NO_MUTEX=1"
+export CXXFLAGS=$CFLAGS
+make clean || true
+./configure --prefix=$PREFIX --host=$TARGETGNU -build=$BUILD \
+--enable-glesv2 \
+--enable-glesv3 \
+--enable-xlib-xcb
+
+make V=1 -j $NUMJOB
+

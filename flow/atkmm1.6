@@ -1,0 +1,6 @@
+if [ ! -z "${ATKMM16}" ]
+then
+    SOURCE=sources/atkmm1.6-2.28.0
+    echo "Building $SOURCE ..." >> $LOG
+    . $CWD/scripts/atkmm1.6; package_make atkmm1.6 2.28.0 tw1
+fi

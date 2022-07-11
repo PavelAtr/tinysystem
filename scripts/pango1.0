@@ -1,0 +1,12 @@
+clear_flags
+
+cd $CWD/$SOURCE
+
+rm -r _build || true
+
+export CFLAGS="$CFLAGS -I$ROOT/$PREFIX/include/cairo -DCAIRO_HAS_FC_FONT=1"
+
+meson --prefix=$PREFIX --cross-file $CWD/scripts/meson_cross/$ABI.cfg -Dintrospection=false -Dcairo=enabled \
+-Dgtk_doc=false -Dinstall_tests=false  _build  .
+ninja -C _build
+

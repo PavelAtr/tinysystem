@@ -1,0 +1,6 @@
+if [ ! -z "${LIBUNISTRING}" ]
+then
+    SOURCE=sources/libunistring-0.9.10
+    echo "Building $SOURCE ..." >> $LOG
+    . $CWD/scripts/libunistring; package_make libunistring 0.9.10 tw1
+fi

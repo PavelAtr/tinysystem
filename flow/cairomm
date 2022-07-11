@@ -1,0 +1,6 @@
+if [ ! -z "${CAIROMM}" ]
+then
+    SOURCE=sources/cairomm-1.12.2
+    echo "Building $SOURCE ..." >> $LOG
+    . $CWD/scripts/cairomm; package_make cairomm 1.12.2 tw1
+fi

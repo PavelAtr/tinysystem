@@ -1,0 +1,6 @@
+if [ ! -z "${FONTCONFIG}" ]
+then
+    SOURCE=sources/fontconfig-2.13.1
+    echo "Building $SOURCE ..." >> $LOG
+    . $CWD/scripts/fontconfig; package_make fontconfig 2.13.1 tw1
+fi

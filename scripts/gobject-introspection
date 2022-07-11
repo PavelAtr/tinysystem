@@ -1,0 +1,10 @@
+clear_flags
+
+#export CFLAGS="-I$DESTDIR/$PREFIX/include -I$DESTDIR/$PREFIX/include/python3.9"
+#export CXXFLAGS=$CFLAGS
+
+cd $CWD/$SOURCE
+rm -r _build || true
+meson --prefix=$PREFIX --cross-file $CWD/scripts/meson_cross/$ABI.cfg -Dgi_cross_use_prebuilt_gi=true -Dbuild_introspection_data=false   _build  .
+ninja -C _build
+

@@ -1,0 +1,6 @@
+if [ ! -z "${GTK30}" ]
+then
+    SOURCE=sources/gtk+3.0-3.24.24
+    echo "Building $SOURCE ..." >> $LOG
+    . $CWD/scripts/gtk+3.0; package_make gtk+3.0 3.24.24 tw1
+fi

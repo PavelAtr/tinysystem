@@ -1,0 +1,10 @@
+clear_flags
+
+#cp -r /usr/include/uuid $DESTDIR/$PREFIX/include/
+
+cd $CWD/$SOURCE
+make clean || true
+./configure --prefix=$PREFIX --host=$TARGET --enable-libxml2
+
+make -j $NUMJOB
+

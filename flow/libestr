@@ -1,0 +1,6 @@
+if [ ! -z "${LIBESTR}" ]
+then
+    SOURCE=sources/libestr-0.1.10
+    echo "Building $SOURCE ..." >> $LOG
+    . $CWD/scripts/libestr; package_make libestr 0.1.10 tw1
+fi

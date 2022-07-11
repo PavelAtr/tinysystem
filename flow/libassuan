@@ -1,0 +1,6 @@
+if [ ! -z "${LIBASSUAN}" ]
+then
+    SOURCE=sources/libassuan-2.5.3
+    echo "Building $SOURCE ..." >> $LOG
+    . $CWD/scripts/libassuan; package_make libassuan 2.5.3 tw1
+fi

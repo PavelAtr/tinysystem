@@ -1,0 +1,6 @@
+if [ ! -z "${CAIRO}" ]
+then
+    SOURCE=sources/cairo-1.17.4
+    echo "Building $SOURCE ..." >> $LOG
+    . $CWD/scripts/cairo; package_make cairo 1.17.4 tw1
+fi

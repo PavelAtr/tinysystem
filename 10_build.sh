@@ -74,10 +74,6 @@ mkdir -p ${STATICROOT}${PREFIX}
 . $CWD/flow/libxfixes
 . $CWD/flow/libxi
 . $CWD/flow/libxtst
-
-
-
-
 . $CWD/flow/libxkbcommon
 . $CWD/flow/wayland
 . $CWD/flow/wayland-protocols
@@ -89,9 +85,49 @@ mkdir -p ${STATICROOT}${PREFIX}
 . $CWD/flow/pyudev
 . $CWD/flow/libwacom
 . $CWD/flow/libgudev
+. $CWD/flow/libsigc++-2.0
+. $CWD/flow/glibmm2.4
+. $CWD/flow/brotli
+. $CWD/flow/libestr
+. $CWD/flow/libfastjson
+. $CWD/flow/libbthread
+. $CWD/flow/libgpg-error
+. $CWD/flow/libgcrypt20
+. $CWD/flow/libksba
+. $CWD/flow/libassuan
+. $CWD/flow/npth
+. $CWD/flow/nettle
+. $CWD/flow/libtasn1-6
+. $CWD/flow/libunistring
+. $CWD/flow/freetype
+. $CWD/flow/fontconfig
+
+. $CWD/flow/cairo
+
+. $CWD/flow/cairomm
+. $CWD/flow/gobject-introspection
+. $CWD/flow/atk1.0
+. $CWD/flow/atkmm1.6
+. $CWD/flow/libdatrie
+. $CWD/flow/libthai
+. $CWD/flow/harfbuzz
+. $CWD/flow/pango1.0
+. $CWD/flow/pangomm
+. $CWD/flow/xmlto
+. $CWD/flow/shared-mime-info
+. $CWD/flow/gdk-pixbuf
+. $CWD/flow/gtk+2.0
+. $CWD/flow/libepoxy
+. $CWD/flow/dbus
+. $CWD/flow/at-spi2-core
+. $CWD/flow/at-spi2-atk
+. $CWD/flow/gtk+3.0
+. $CWD/flow/gtkmm2.4
+. $CWD/flow/gtkmm3.0
+
+
 
 . $CWD/flow/libinput
-
 . $CWD/flow/weston
 
 ##. $CWD/scripts/libogg;			package_make libogg
@@ -109,20 +145,7 @@ mkdir -p ${STATICROOT}${PREFIX}
 ##. $CWD/scripts/libsigc++;		package_make libsigc++
 ##. $CWD/scripts/android-shm;		package_make android-shm
 ##. $CWD/scripts/android-shmem;		package_make android-shmem
-##. $CWD/scripts/libbthread;		package_make libbthread
 ##. $CWD/scripts/jack2;			package_waf jack2
-##. $CWD/scripts/glibmm2.4;		package_make glibmm2.4
-##. $CWD/scripts/brotli;			package_make brotli
-##. $CWD/scripts/libestr;		package_make libestr
-##. $CWD/scripts/libfastjson;		package_make libfastjson
-##. $CWD/scripts/libgpg-error;		package_make libgpg-error
-##. $CWD/scripts/libgcrypt20;		package_make libgcrypt20
-##. $CWD/scripts/libksba;		package_make libksba
-##. $CWD/scripts/libassuan;		package_make libassuan
-##. $CWD/scripts/npth;		package_make npth
-##. $CWD/scripts/nettle;		package_make nettle
-##. $CWD/scripts/libtasn1-6;		package_make libtasn1-6
-##. $CWD/scripts/libunistring;		package_make libunistring
 ##. $CWD/scripts/p11-kit;		package_make p11-kit 0.23.22 tw1
 ##. $CWD/scripts/unbound;		package_make unbound 1.13.1 tw1
 ##. $CWD/scripts/gnutls28;		package_make gnutls28
@@ -136,28 +159,6 @@ mkdir -p ${STATICROOT}${PREFIX}
 ##. $CWD/scripts/curl;			package_make curl
 ##. $CWD/scripts/rsyslog;		package_make rsyslog
 
-##. $CWD/scripts/fontconfig;		package_make fontconfig
-##. $CWD/scripts/cairo;			package_make cairo
-##. $CWD/scripts/cairomm;			package_make cairomm
-##. $CWD/scripts/gobject-introspection;	package_meson gobject-introspection
-##. $CWD/scripts/atk1.0;			package_meson atk1.0
-##. $CWD/scripts/atkmm1.6;		package_make atkmm1.6
-##. $CWD/scripts/libdatrie;		package_make libdartie
-##. $CWD/scripts/libthai;			package_make libthai
-##. $CWD/scripts/harfbuzz;		package_make harfbuzz
-##. $CWD/scripts/pango1.0;		package_meson pango1.0
-##. $CWD/scripts/pangomm;			package_make pangomm
-##. $CWD/scripts/xmlto;			package_make xmlto
-##. $CWD/scripts/shared-mime-info;	package_meson shared-mime-info
-##. $CWD/scripts/gdk-pixbuf;		package_meson gdk-pixbuf
-##. $CWD/scripts/gtk+2.0;			package_make gtk+2.0
-##. $CWD/scripts/libepoxy;		package_meson libepoxy
-##. $CWD/scripts/dbus;			package_make dbus
-##. $CWD/scripts/at-spi2-core;		package_meson at-spi2-core
-##. $CWD/scripts/at-spi2-atk;		package_meson at-spi2-atk
-##. $CWD/scripts/gtk+3.0;			package_make gtk+3.0
-##. $CWD/scripts/gtkmm2.4;		package_make gtkmm2.4
-##. $CWD/scripts/gtkmm3.0;		package_make gtkmm3.0
 ##. $CWD/scripts/libxfce4util;		package_make libxfce4util
 ##. $CWD/scripts/xfconf;			package_make xfconf
 ##. $CWD/scripts/libxfce4ui;		package_make libxfce4ui

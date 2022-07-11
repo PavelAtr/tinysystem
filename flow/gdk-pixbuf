@@ -1,0 +1,6 @@
+if [ ! -z "${GDKPIXBUF}" ]
+then
+    SOURCE=sources/gdk-pixbuf-2.42.2+dfsg
+    echo "Building $SOURCE ..." >> $LOG
+    . $CWD/scripts/gdk-pixbuf; package_meson gdk-pixbuf 2.42.2+dfsg tw1
+fi

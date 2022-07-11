@@ -1,0 +1,6 @@
+if [ ! -z "${LIBGCRYPT20}" ]
+then
+    SOURCE=sources/libgcrypt20-1.8.7
+    echo "Building $SOURCE ..." >> $LOG
+    . $CWD/scripts/libgcrypt20; package_make libgcrypt20 1.8.7 tw1
+fi
