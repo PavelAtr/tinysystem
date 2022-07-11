@@ -1,0 +1,13 @@
+clear_flags
+
+export LDFLAGS="$LDFLAGS -lbtrace"
+cd $CWD/$SOURCE
+rm -r _build || true
+meson --prefix=$PREFIX \
+--cross-file $CWD/scripts/meson_cross/$ABI.cfg \
+-Dglesv2=enabled \
+-Dglesv3=enabled \
+-Ddrm=enabled \
+-Dtests=disabled \
+_build  .
+#ninja -C _build

@@ -2,13 +2,13 @@ clear_flags
 
 export LDFLAGS="$LDFLAGS -lbtrace"
 cd $CWD/$SOURCE
-rm -r _build || true
-meson --prefix=$PREFIX \
---cross-file $CWD/scripts/meson_cross/$ABI.cfg \
--Dglesv2=enabled \
--Dglesv3=enabled \
--Ddrm=enabled \
--Dtests=disabled \
--Dspectre=disabled \
-_build  .
-    ninja -C _build
+export CFLAGS="$CFLAGS -DCAIRO_NO_MUTEX=1"
+export CXXFLAGS=$CFLAGS
+make clean || true
+#./configure --prefix=$PREFIX --host=$TARGETGNU -build=$BUILD \
+#--enable-glesv2=yes \
+#--enable-glesv3=yes \
+#--enable-xlib-xcb=yes \
+#--enable-egl=no
+
+make V=1 -j $NUMJOB
