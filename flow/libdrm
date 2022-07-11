@@ -1,0 +1,6 @@
+if [ ! -z "${LIBDRM}" ]
+then
+    SOURCE=sources/libdrm
+    echo "Building $SOURCE ..." >> $LOG
+    . $CWD/scripts/libdrm; package_meson libdrm git20220711 tw1
+fi

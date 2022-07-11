@@ -61,7 +61,6 @@ mkdir -p ${STATICROOT}${PREFIX}
 . $CWD/flow/libmd
 . $CWD/flow/libbsd
 . $CWD/flow/android-videolibs
-
 . $CWD/flow/X11stub
 . $CWD/flow/xcb-proto
 . $CWD/flow/libxau
@@ -101,7 +100,7 @@ mkdir -p ${STATICROOT}${PREFIX}
 . $CWD/flow/libunistring
 . $CWD/flow/freetype
 . $CWD/flow/fontconfig
-
+. $CWD/flow/libdrm
 . $CWD/flow/cairo
 
 . $CWD/flow/cairomm

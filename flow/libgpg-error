@@ -1,0 +1,6 @@
+if [ ! -z "${LIBGPGERROR}" ]
+then
+    SOURCE=sources/libgpg-error
+    echo "Building $SOURCE ..." >> $LOG
+    . $CWD/scripts/libgpg-error; package_make libgpg-error git20220711 tw1
+fi
