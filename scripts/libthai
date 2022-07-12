@@ -1,6 +1,6 @@
 clear_flags
 
 cd $CWD/$SOURCE
-./configure --prefix=$PREFIX --target=$TARGET
+./configure --prefix=$PREFIX --host=$TARGET
 make clean || true
 make -j $NUMJOB

@@ -2,5 +2,5 @@ if [ ! -z "${XMLTO}" ]
 then
     SOURCE=sources/xmlto-0.0.28
     echo "Building $SOURCE ..." >> $LOG
-    . $CWD/scripts/xmlto-0.0.28; package_meson xmlto 0.0.28 tw1
+    . $CWD/scripts/xmlto; package_make xmlto 0.0.28 tw1
 fi

@@ -5,10 +5,9 @@ cd $CWD/$SOURCE
 export CFLAGS="$CFLAGS -DCAIRO_NO_MUTEX=1"
 export CXXFLAGS=$CFLAGS
 make clean || true
-#./configure --prefix=$PREFIX --host=$TARGETGNU -build=$BUILD \
-#--enable-glesv2=yes \
-#--enable-glesv3=yes \
-#--enable-xlib-xcb=yes \
-#--enable-egl=no
+./configure --prefix=$PREFIX --host=$TARGET -build=$BUILD \
+--enable-glesv2=yes \
+--enable-xlib-xcb=yes \
+--enable-egl=no
 
 make V=1 -j $NUMJOB

@@ -27,6 +27,7 @@ export LDD=ldd-$ABI
 export LOG=$CWD/10_build_${ABI}.log
 export SHORTPREFIX=/$APP_PATH
 export PREFIX=$SHORTPREFIX/usr
+export OLDPREFIX=$PREFIX
 export PATH="$CWD/bin:$PATH"
 
 export CFLAGS="-I${ROOT}${PREFIX}/include"
@@ -44,9 +45,10 @@ export PKG_CONFIG_LIBDIR=${ROOT}/${PREFIX}/lib/pkgconfig
 
 function pkghead()
 {
-    echo "Pkgname: $PKGNAME" > ${PKGDIR}${SHORTPREFIX}/var/lib/packages/$PKGNAME.head
-    echo "Version: ${PKGVERSION}_${PKGBUILD}" >> ${PKGDIR}${SHORTPREFIX}/var/lib/packages/$PKGNAME.head
-    echo "ARCH: ${ABI}" >> ${PKGDIR}${SHORTPREFIX}/var/lib/packages/$PKGNAME.head
+    echo "Pkgname:$PKGNAME" > ${PKGDIR}${SHORTPREFIX}/var/lib/packages/$PKGNAME.head
+    echo "Version:${PKGVERSION} " >> ${PKGDIR}${SHORTPREFIX}/var/lib/packages/$PKGNAME.head
+    echo "Build:${PKGBUILD}" >> ${PKGDIR}${SHORTPREFIX}/var/lib/packages/$PKGNAME.head
+    echo "ARCH:${ABI}" >> ${PKGDIR}${SHORTPREFIX}/var/lib/packages/$PKGNAME.head
 }
 
 function pkgstrip()

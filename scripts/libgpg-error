@@ -6,7 +6,7 @@ export LDFLAGS="$LDFLAGS -lbthread"
 
 make clean || true
 ./autogen.sh
-./configure --prefix=$PREFIX --host=$TARGETGNU \
+./configure --prefix=$PREFIX --host=$TARGET \
 --disable-doc \
 --disable-tests
 

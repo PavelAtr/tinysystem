@@ -40,7 +40,7 @@ do
     done
 done
 
-echo -n "$PKGNAME:"
+echo -n "$PKGNAME:deps:"
 
 cat /tmp/bindeps.pkgraw | sort | uniq | while read pkgraw
 do

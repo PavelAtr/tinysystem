@@ -1,7 +1,7 @@
 clear_flags
 
-#export CFLAGS="-I$DESTDIR/$PREFIX/include -I$DESTDIR/$PREFIX/include/python3.9"
-#export CXXFLAGS=$CFLAGS
+export CFLAGS="$CFLAGS -I$ROOT/$PREFIX/include/python3.9"
+export CXXFLAGS=$CFLAGS
 
 cd $CWD/$SOURCE
 rm -r _build || true

@@ -102,7 +102,6 @@ mkdir -p ${STATICROOT}${PREFIX}
 . $CWD/flow/fontconfig
 . $CWD/flow/libdrm
 . $CWD/flow/cairo
-
 . $CWD/flow/cairomm
 . $CWD/flow/gobject-introspection
 . $CWD/flow/atk1.0
@@ -123,8 +122,6 @@ mkdir -p ${STATICROOT}${PREFIX}
 . $CWD/flow/gtk+3.0
 . $CWD/flow/gtkmm2.4
 . $CWD/flow/gtkmm3.0
-
-
 
 . $CWD/flow/libinput
 . $CWD/flow/weston

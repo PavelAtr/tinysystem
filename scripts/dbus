@@ -3,8 +3,10 @@ clear_flags
 cd $CWD/$SOURCE
 export DBUS_X_CFLAGS=""
 export X_CFLAGS=""
-./configure --prefix=$PREFIX --target=$TARGET --build=$BUILD \
---disable-tests
+./configure --prefix=$PREFIX --host=$TARGET --build=$BUILD \
+--disable-tests \
+--oldincludedir=/tmp \
+--x-includes=$ROOT/$PREFIX/include/X11
 make clean || true
-make -j $NUMJOB
+make V=1 -j $NUMJOB
 
