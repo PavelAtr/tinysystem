@@ -45,10 +45,12 @@ export PKG_CONFIG_LIBDIR=${ROOT}/${PREFIX}/lib/pkgconfig
 
 function pkghead()
 {
-    echo "Pkgname:$PKGNAME" > ${PKGDIR}${SHORTPREFIX}/var/lib/packages/$PKGNAME.head
-    echo "Version:${PKGVERSION} " >> ${PKGDIR}${SHORTPREFIX}/var/lib/packages/$PKGNAME.head
-    echo "Build:${PKGBUILD}" >> ${PKGDIR}${SHORTPREFIX}/var/lib/packages/$PKGNAME.head
-    echo "ARCH:${ABI}" >> ${PKGDIR}${SHORTPREFIX}/var/lib/packages/$PKGNAME.head
+    echo "Pkgname=$PKGNAME" > ${PKGDIR}${SHORTPREFIX}/var/lib/packages/$PKGNAME.head
+    echo "Version=${PKGVERSION} " >> ${PKGDIR}${SHORTPREFIX}/var/lib/packages/$PKGNAME.head
+    echo "Build=${PKGBUILD}" >> ${PKGDIR}${SHORTPREFIX}/var/lib/packages/$PKGNAME.head
+    echo "ARCH=${ABI}" >> ${PKGDIR}${SHORTPREFIX}/var/lib/packages/$PKGNAME.head
+    echo "$PKGNAME:conflict:" > ${PKGDIR}${SHORTPREFIX}/var/lib/packages/$PKGNAME.conflict
+    echo "$PKGNAME:suggest:" > ${PKGDIR}${SHORTPREFIX}/var/lib/packages/$PKGNAME.suggest
 }
 
 function pkgstrip()

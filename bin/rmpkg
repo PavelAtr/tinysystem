@@ -1,0 +1,33 @@
+#!/bin/sh
+
+if [ -z "$1" ]
+then
+    echo "Usage: $0 <pkg_short_name1> ..."
+    exit 1
+fi
+
+[ -z "$ROOT" ] && ROOT=/
+
+CWD=$(pwd)
+
+cd $ROOT
+
+for pkg in "$@"
+do
+    echo -n "Removing $pkg ..."
+    PKG_FILES=${PREFIX}/var/lib/packages/${pkg}.files
+    DBDIR=$(dirname $PKG_FILES)
+    cat $PKG_FILES | while read str
+    do
+	set $str
+	rm $2
+    done
+
+    cat $PKG_FILES | while read str
+    do
+	set $str
+	rmdir $(dirname $2) 2>/dev/null
+    done
+    rm ${DBDIR}/$pkg.*
+    echo "OK"
+done

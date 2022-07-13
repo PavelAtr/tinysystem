@@ -1,72 +1,85 @@
 #!/bin/sh
+set -e
 
-REPO_PATH=/home/pavel/tinyrepo
-TMP=/tmp/tinyrepo
-GPGKEY="tinysystemco@gmail.com"
+if [ ! -f ./.tinyrepo ]
+then
+    echo "Created empty template .tinyrepo, please edit this file."
+    echo "REPO_PATH=/home/pavel/tinyrepo" > .tinyrepo
+    echo "TMP=/tmp/tinyrepo" >> .tinyrepo
+    echo "GPGKEY=tinysystemco@gmail.com" >> .tinyrepo
+else
+    . ./.tinyrepo
+fi
+
+if [ -z "$1" ]
+then
+    echo "Usage: $0 <archive1> <archive2> ..."
+    exit 1
+fi
+
 CWD=$(pwd)
-
 
 mkdir -p ${REPO_PATH}/pool
 mkdir -p $TMP
 
-#[ ! -f $REPO_PATH/ ]
-
-
-
 for pkgfile in "$@"
 do
     cd $TMP
+
     pkgshort=$(basename $pkgfile)
+
     PKG_ENV=${pkgshort}.env
     PKG_HEAD=$(tar --list -f ${CWD}/${pkgfile}  | grep "lib/packages/.*\.head")
     PKG_FILES=$(tar --list -f ${CWD}/${pkgfile}  | grep "lib/packages/.*\.files")
     PKG_DEPS=$(tar --list -f ${CWD}/${pkgfile}  | grep "lib/packages/.*\.deps")
+    PKG_CONFLICT=$(tar --list -f ${CWD}/${pkgfile}  | grep "lib/packages/.*\.conflict")
+    PKG_SUGGEST=$(tar --list -f ${CWD}/${pkgfile}  | grep "lib/packages/.*\.suggest")
 
     tar -x -f $CWD/$pkgfile $PKG_HEAD
     tar -x -f $CWD/$pkgfile $PKG_FILES
     tar -x -f $CWD/$pkgfile $PKG_DEPS
+    tar -x -f $CWD/$pkgfile $PKG_CONFLICT
+    tar -x -f $CWD/$pkgfile $PKG_SUGGEST
 
-    cat $PKG_HEAD | while read str
-    do
-	OLDIFS=$IFS
-	IFS=": "
-	set $str
-	echo $1=$2
-	IFS=$OLDIFS
-    done > $PKG_ENV
-    . ./$PKG_ENV
+    . $PKG_HEAD
 
     [ ! -f ${REPO_PATH}/DB_${ARCH}.gz ] && echo "" | gzip -c > ${REPO_PATH}/DB_${ARCH}.gz
     zcat ${REPO_PATH}/DB_${ARCH}.gz | grep -v "^${Pkgname}:" > DB_${ARCH}
 
     cat $PKG_HEAD | while read str
     do
-	echo "${Pkgname}:${str}" >> DB_${ARCH}
+        echo "${Pkgname}:${str}" >> DB_${ARCH}
     done
 
     echo "${Pkgname}:archive:${pkgshort}" >> DB_${ARCH}
 
     cat $PKG_FILES | while read str
     do
-	echo "${Pkgname}:file:${str}" >> DB_${ARCH}
+        echo "${Pkgname}:file:${str}" >> DB_${ARCH}
     done
 
     cat $PKG_DEPS >> DB_${ARCH}
+    cat $PKG_CONFLICT >> DB_${ARCH}
+    cat $PKG_SUGGEST >> DB_${ARCH}
 
     cat DB_${ARCH} | gzip -c > ${REPO_PATH}/DB_${ARCH}.gz
 
     cp ${CWD}/$pkgfile ${REPO_PATH}/pool/
 
-    gpg --sign -b --default-key $GPGKEY  ${REPO_PATH}/pool/${pkgshort} 
+    rm  ${REPO_PATH}/pool/${pkgshort}.sig
+    gpg --sign -b --default-key $GPGKEY  ${REPO_PATH}/pool/${pkgshort}
 
     rm $PKG_HEAD
     rm $PKG_FILES
     rm $PKG_DEPS
-    rm $PKG_ENV
+    rm $PKG_CONFLICT
+    rm $PKG_SUGGEST
 
     echo "${pkgfile} added."
+
     cd ${REPO_PATH}
     md5sum  DB_${ARCH}.gz > DB_${ARCH}.gz.md5
+
     cd $CWD
 done
 

@@ -1,0 +1,22 @@
+#!/bin/sh
+
+if [ -z "$1" ]
+then
+    echo "Usage: $0 <archive1> ..."
+    exit 1
+fi
+
+[ -z "$ROOT" ] && ROOT=/
+
+CWD=$(pwd)
+
+cd $ROOT
+
+for pkg in "$@"
+do
+    echo -n "Install $pkg ..."
+    tar -xvf ${CWD}/${pkg}
+    PKG_HEAD=$(tar --list -f ${CWD}/${pkg} | grep "lib/packages/.*\.head")
+    echo "Flag=M">> $PKG_HEAD
+    echo "OK"
+done
