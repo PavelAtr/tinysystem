@@ -1,0 +1,31 @@
+clear_flags
+
+. $CWD/10_cross_$ABI.cfg
+
+export LDFLAGS=" -L${ROOT}${PREFIX}/static/lib -L${STATICROOT}${PREFIX}/lib -lc_nonshared -lblkid"
+export CFLAGS="-I${STATICROOT}${PREFIX}/include -DLINE_MAX=128 -DRLIMIT_NLIMITS=16 -DIPTOS_LOWCOST=0x02 \
+-DSG_FLAG_LUN_INHIBIT=2 -fPIC"
+export CXXFLAGS=$CFLAGS
+export CCLD="$CC -static"
+export CC="$CC -static"
+export PKG_CONFIG_PATH=/tmp
+export PKG_CONFIG_PATH_FOR_BUILD=$PKG_CONFIG_PATH
+export PKG_CONFIG_LIBDIR=/tmp
+
+export PREFIX="/static"
+
+cd $CWD/$SOURCE
+
+make clean || true
+./autogen.sh
+./configure --prefix=$PREFIX --host=$TARGET \
+  --enable-hwdb \
+  --enable-rule-generator \
+  --disable-manpages \
+--enable-shared=no
+sed -i 's/-static\ |/-staticdummy\ |/g' libtool
+
+
+make V=1 -j $NUMJOB
+
+. $CWD/10_cross_${ABI}_ndk.cfg

@@ -1,0 +1,6 @@
+if [ ! -z "${LIBWEBP}" ]
+then
+    SOURCE=sources/libwebp-0.6.1
+    echo "Building $SOURCE ..." >> $LOG
+    . $CWD/scripts/libwebp; package_make libwebp 0.6.1 tw1
+fi

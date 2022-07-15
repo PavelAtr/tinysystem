@@ -1,8 +1,28 @@
 clear_flags
 
+
 cd $CWD/$SOURCE
 rm -r _build || true
+export LD_LIBRARY_PATH=${ROOT}/${PREFIX}/lib
+export CFLAGS="$CFLAGS -include bits/signal_types.h -Dprogram_invocation_short_name=getprogname\(\) -include bthread.h"
+export CXXFLAGS=$CFLAGS
+export LDFLAGS="$LDFLAGS -lbthread"
 meson --prefix=$PREFIX \
 --cross-file $CWD/scripts/meson_cross/$ABI.cfg \
+-Dsystemd=false \
+-Dlauncher-logind=false \
+-Dbackend-drm=false \
+-Dbackend-default=wayland \
+-Dbackend-rdp=false \
+-Dcolor-management-colord=false \
+-Dremoting=false \
+-Dpipewire=false \
+-Dsimple-clients=[] \
+-Dxwayland=true \
 _build  .
 ninja -C _build
+
+#-Drenderer-gl=false \
+#-Dbackend-drm-screencast-vaapi=false \
+
+unset LD_LIBRARY_PATH

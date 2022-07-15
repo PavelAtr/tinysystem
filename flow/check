@@ -1,0 +1,6 @@
+if [ ! -z "${CHECK}" ]
+then
+    SOURCE=sources/check-0.15.2
+    echo "Building $SOURCE ..." >> $LOG
+    . $CWD/scripts/check; package_make check 0.15.2 tw1
+fi

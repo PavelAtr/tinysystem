@@ -1,33 +1,52 @@
 #!/bin/sh
 
-if [ -z "$1" ]
-then
-    echo "Usage: $0 <pkg_short_name1> ..."
-    exit 1
-fi
-
 [ -z "$ROOT" ] && ROOT=/
+[ -z "$BUSYBOX" ] && BUSYBOX=/bin/busybox
+[ -z "$BASEDIR" ] && BASEDIR=/var/lib/packages
 
 CWD=$(pwd)
 
 cd $ROOT
 
-for pkg in "$@"
-do
-    echo -n "Removing $pkg ..."
-    PKG_FILES=${PREFIX}/var/lib/packages/${pkg}.files
-    DBDIR=$(dirname $PKG_FILES)
-    cat $PKG_FILES | while read str
-    do
-	set $str
-	rm $2
-    done
+if [ ! -f ${BASEDIR}/job/pkgremove -a -z "$1" ]
+then
+    echo "Usage: $0 [ <pkg_short_name1> ... ]"
+    exit 1
+fi
 
-    cat $PKG_FILES | while read str
+(
+    if [ ! -z "$1" ]
+    then
+        for i in "$@"
+        do
+            echo " $i"
+        done
+    else
+        [ -f ${BASEDIR}/job/pkgremove ]  && cat ${BASEDIR}/job/pkgremove
+    fi
+) | while read PKG
+do
+    echo -n "Removing $PKG ... "
+    PKG_FILES=${PREFIX}/var/lib/packages/${PKG}.files
+    if [ ! -f $PKG_FILES ]
+    then
+        echo "not installed"
+        continue
+    fi
+    DBDIR=$(${BUSYBOX} dirname ${PKG_FILES})
+    ${BUSYBOX} cat $PKG_FILES | while read STR
     do
-	set $str
-	rmdir $(dirname $2) 2>/dev/null
+        set $STR
+        ${BUSYBOX} rm $2
     done
-    rm ${DBDIR}/$pkg.*
+    ${BUSYBOX} cat $PKG_FILES | while read STR
+    do
+        set $STR
+	echo $(${BUSYBOX} dirname $2)
+    done | sort -r | uniq | while read DIR
+    do
+	${BUSYBOX} rmdir -p $DIR 2>/dev/null
+    done
+    ${BUSYBOX} rm ${DBDIR}/${PKG}.*
     echo "OK"
 done

@@ -1,0 +1,41 @@
+#!/bin/sh
+
+[ -z "$BUSYBOX" ] && BUSYBOX=/bin/busybox
+[ -z "$ROOT" ] && ROOT=/
+[ -z "$BASEDIR" ] && BASEDIR=/var/lib/packages
+
+CWD=$(pwd)
+
+cd $ROOT
+
+if [ ! -f ${BASEDIR}/job/pkginstall -a  -z "$1" ]
+then
+    echo "Usage: $0 [ <archive1> ... ]"
+    exit 1
+fi
+
+(
+    if [ ! -z "$1" ]
+    then
+	for PKG in "$@"
+	do
+	    echo "M $CWD/${PKG}"
+	done
+    else
+	[ -f ${BASEDIR}/job/pkginstall ]  && cat ${BASEDIR}/job/pkginstall
+    fi
+) | while read STR
+do
+	set $STR
+	FLAG=$1
+	PKG_FILE=$2
+        echo -n "Install $PKG_FILE ... "
+        PKG_HEAD=$(${BUSYBOX} tar -ztf ${PKG_FILE} | ${BUSYBOX} grep 'lib/packages/.*\.head')
+        if [ -f $PKG_HEAD ]
+        then
+	    echo "alredy installed"
+	    continue
+	fi
+	${BUSYBOX} tar -zxvf ${PKG_FILE} >/dev/null &&  echo "OK" || echo "ERROR"
+	echo "Flag=$FLAG">> $PKG_HEAD
+done

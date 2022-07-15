@@ -1,0 +1,6 @@
+if [ ! -z "${MESA}" ]
+then
+    SOURCE=sources/mesa-20.3.5
+    echo "Building $SOURCE ..." >> $LOG
+    . $CWD/scripts/mesa; package_meson mesa 20.3.5 tw1
+fi

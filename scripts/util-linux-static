@@ -7,7 +7,7 @@ install /usr/$TARGETGNU/include/sys/syslog.h ${STATICROOT}${OLDPREFIX}/include/s
 mkdir -p ${STATICROOT}${OLDPREFIX}/include/bits
 install /usr/$TARGETGNU/include/bits/syslog-path.h ${STATICROOT}${OLDPREFIX}/include/bits/
 
-export PREFIX="/"
+export PREFIX="/static"
 export LDFLAGS="-L${STATICROOT}${OLDPREFIX}/lib -lc_nonshared"
 export CFLAGS="-I${STATICROOT}${OLDPREFIX}/include -DGLOB_NOMAGIC=0 -D__THROW='' -fPIC"
 export CC="$CC -static"

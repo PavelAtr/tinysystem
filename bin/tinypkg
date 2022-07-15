@@ -1,0 +1,179 @@
+#!/bin/bash
+
+function download()
+{
+    echo -n "" > ${BASEDIR}/job/pkginstall
+    cat ${BASEDIR}/job/download | while read str
+    do
+	set $str
+	FLAG=$1
+	PKG=$2
+	echo "Downloading $PKG"
+	export $(zcat ${BASEDIR}/*/DB_${ARCH}.gz | grep "Pkgname=${PKG}" | sort -r | head -n 1) > /dev/null
+	if [ ! -z "$Archive" ]
+	then
+	    echo "$FLAG ${BASEDIR}/cache/${Archive}" >> ${BASEDIR}/job/pkginstall
+	    cp ${BASEDIR}/*/pool/$Archive ${BASEDIR}/cache/
+	fi
+    done
+}
+
+function cmdinstall()
+{
+    shift 2
+    echo -n "" > ${BASEDIR}/job/download
+    for PKG in "$@"
+    do
+        echo "M $PKG" >> ${BASEDIR}/job/download
+        DEPS=$(zcat ${BASEDIR}/*/DB_${ARCH}.gz | grep "^${PKG}:deps:" | sed "s/^${PKG}:deps://")
+	for dep in $DEPS
+	do
+	    echo "A $dep" >> ${BASEDIR}/job/download
+	done
+    done
+    download
+    ./instpkg
+}
+
+function cmdremove()
+{
+    shift 2
+    echo -n "" > ${BASEDIR}/job/pkgremove
+    for PKG in "$@"
+    do
+	if grep -e ":$PKG\ " -e "\ $PKG\ " -e "\ $PKG$" ${ROOT}/${PREFIX}/var/lib/packages/*.deps > /dev/null
+	then
+	    echo "Package $PKG used by other packages"
+	    continue
+	fi
+        echo "$PKG" >> ${BASEDIR}/job/pkgremove
+    done
+    ./rmpkg
+}
+
+function cmdupgrade()
+{
+    shift 2
+    echo "Upgrade"
+    exit 0
+    echo -n "" > ${BASEDIR}/job/download
+    for PKG in "$@"
+    do
+        echo "M $PKG" >> ${BASEDIR}/job/download
+        DEPS=$(zcat ${BASEDIR}/*/DB_${ARCH}.gz | grep "^${PKG}:deps:" | sed "s/^${PKG}:deps://")
+	for dep in $DEPS
+	do
+	    echo "A $dep" >> ${BASEDIR}/job/download
+	done
+    done
+    download
+    ./instpkg
+}
+
+
+function cmdupdate()
+{
+    shift
+    echo "Update"
+}
+
+function cmdsearch()
+{
+    shift 2
+    WORD=$1
+    zcat ${BASEDIR}/*/DB_${ARCH}.gz | grep "=" | grep "${WORD}"
+}
+
+function cmdfilesearch()
+{
+    shift 2
+    WORD=$1
+    zcat ${BASEDIR}/*/DB_${ARCH}.gz | grep ":file:" | grep "${WORD}" | sed 's/file:.*\ /\ /'
+}
+
+function cmddepends()
+{
+    shift 2
+    for PKG in "$@"
+    do
+	zcat ${BASEDIR}/*/DB_${ARCH}.gz | grep "^${PKG}:deps:" | sed 's/deps://'
+    done
+}
+
+function cmdused()
+{
+    shift 2
+    PKG=$1
+    cd ${ROOT}/${PREFIX}/var/lib/packages/
+    USES=`grep -e ":$PKG\ " -e "\ $PKG\ " -e "\ $PKG$" *.deps | sed 's/\(^.*\)\.deps:.*$/\1/'`
+    for use in $USES
+    do
+        echo "used by $use"
+    done
+}
+
+
+function cmdusage()
+{
+    shift
+    echo "Usage: $0 [--arch=] [--root=] [--base=] update|install|remove|upgrade|search|file-search|depend|used arg1 ..."
+}
+
+. /etc/tinypkg/config
+
+mkdir -p ${BASEDIR}/cache
+mkdir -p ${BASEDIR}/job
+mkdir -p ${TMP}
+
+ARGS=$(getopt -a -n alphabet -o a:b:r: --long arch:,base:,root: -- "$@")
+eval set -- "$ARGS"
+while :
+do
+  case "$1" in
+    -a | --arch) export ARCH="$2" ; shift 2   ;;
+    -b | --base) export BASEDIR="$2" ; shift 2   ;;
+    -r | --root) export ROOT="$2"  ; shift 2 ;;
+    --) case $2 in
+	     "update")
+		cmdupdate $@
+		break
+		;;
+	     "install")
+		cmdinstall $@
+		break
+		;;
+	    "remove")
+		cmdremove $@
+		break
+		;;
+	    "upgrade")
+		cmdupgrade $@
+		break
+		;;
+	    "search")
+		cmdsearch $@
+		break
+		;;
+	    "file-search")
+		cmdfilesearch $@
+		break
+		;;
+	    "depends")
+		cmddepends $@
+		break
+		;;
+	    "used")
+		cmdused $@
+		break
+		;;
+	    *)
+		cmdusage $@
+		break
+		;;
+	esac
+;;
+    *) usage ;;
+  esac
+done
+
+

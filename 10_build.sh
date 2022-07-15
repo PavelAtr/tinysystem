@@ -42,6 +42,7 @@ mkdir -p ${STATICROOT}${PREFIX}
 . $CWD/flow/util-linux-static
 . $CWD/flow/dash
 . $CWD/flow/login
+. $CWD/flow/eudev-static
 . $CWD/flow/eudev
 . $CWD/flow/coreutils
 . $CWD/flow/psmisc
@@ -77,6 +78,8 @@ mkdir -p ${STATICROOT}${PREFIX}
 . $CWD/flow/wayland
 . $CWD/flow/wayland-protocols
 . $CWD/flow/libpng1.6
+. $CWD/flow/libjpeg-turbo
+. $CWD/flow/libwebp
 . $CWD/flow/pixman
 . $CWD/flow/mtdev
 . $CWD/flow/libevdev
@@ -122,8 +125,11 @@ mkdir -p ${STATICROOT}${PREFIX}
 . $CWD/flow/gtk+3.0
 . $CWD/flow/gtkmm2.4
 . $CWD/flow/gtkmm3.0
-
+. $CWD/flow/check
 . $CWD/flow/libinput
+. $CWD/flow/lcms2
+. $CWD/flow/libxcursor
+
 . $CWD/flow/weston
 
 ##. $CWD/scripts/libogg;			package_make libogg

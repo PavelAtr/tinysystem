@@ -1,0 +1,6 @@
+if [ ! -z "${LCMS2}" ]
+then
+    SOURCE=sources/lcms2-2.12~rc1
+    echo "Building $SOURCE ..." >> $LOG
+    . $CWD/scripts/lcms2; package_make lcms2 2.12~rc1 tw1
+fi

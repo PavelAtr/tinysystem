@@ -1,0 +1,6 @@
+if [ ! -z "${EUDEVSTATIC}" ]
+then
+    SOURCE=sources/eudev
+    echo "Building $SOURCE ..." >> $LOG
+    . $CWD/scripts/eudev-static; package_make eudev-static git20220706 tw1
+fi

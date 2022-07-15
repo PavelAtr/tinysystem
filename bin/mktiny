@@ -15,4 +15,5 @@ echo "ARCH=" >> $PKGNAME.head
 echo "$PKGNAME:conflict:" > $PKGNAME.conflict
 echo "$PKGNAME:suggest:" > $PKGNAME.suggest
 echo "$PKGNAME:deps:" > $PKGNAME.deps
-echo "" > $PKGNAME.files
+echo "<Some text.>" > $PKGNAME.desc
+echo "<md5sum output>" > $PKGNAME.files

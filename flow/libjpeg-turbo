@@ -1,0 +1,6 @@
+if [ ! -z "${LIBJPEGTURBO}" ]
+then
+    SOURCE=sources/libjpeg-turbo-2.0.6
+    echo "Building $SOURCE ..." >> $LOG
+    . $CWD/scripts/libjpeg-turbo; package_make libjpeg-turbo 2.0.6 tw1
+fi

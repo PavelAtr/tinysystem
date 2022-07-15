@@ -1,0 +1,48 @@
+#!/bin/sh
+
+[ -z "$BUSYBOX" ] && BUSYBOX=/bin/busybox
+[ -z "$ROOT" ] && ROOT=/
+[ -z "$BASEDIR" ] && BASEDIR=/var/lib/packages
+
+CWD=$(pwd)
+
+cd $ROOT
+
+if [ ! -f ${BASEDIR}/job/pkgupgrade -a  -z "$1" ]
+then
+    echo "Usage: $0 [ <archive1> ... ]"
+    exit 1
+fi
+
+(
+    if [ ! -z "$1" ]
+    then
+	for PKG in "$@"
+	do
+	    echo "$CWD/${PKG}"
+	done
+    else
+	[ -f ${BASEDIR}/job/pkginstall ]  && cat ${BASEDIR}/job/pkginstall
+    fi
+) | while read PKG_FILE
+do
+	FLAG=M
+        echo -n "Upgrade $PKG_FILE ... "
+        PKG_FILES=$(${BUSYBOX} tar -ztf ${PKG_FILE} | ${BUSYBOX} grep 'lib/packages/.*\.files')
+        PKG_HEAD=$(${BUSYBOX} tar -ztf ${PKG_FILE} | ${BUSYBOX} grep 'lib/packages/.*\.head')
+	if [ ! -f $PKG_FILES ]
+	then
+	    echo "not installed"
+	    exit 1
+	fi
+	cp $PKG_FILES ${PKG_FILES}.upgr
+	${BUSYBOX} tar -zxvf ${PKG_FILE} >/dev/null &&  echo "OK" || echo "ERROR"
+
+	cat ${PKG_FILES}.upgr | while read STR
+	do
+	    set $STR
+	    ${BUSYBOX} grep "\ $2$" $PKG_FILES >/dev/null || ${BUSYBOX} rm $2
+	done
+	${BUSYBOX} rm ${PKG_FILES}.upgr
+	echo "Flag=${Flag}">> $PKG_HEAD
+done
