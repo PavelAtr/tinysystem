@@ -45,12 +45,14 @@ export PKG_CONFIG_LIBDIR=${ROOT}/${PREFIX}/lib/pkgconfig
 
 function pkghead()
 {
-    echo "Pkgname=$PKGNAME" > ${PKGDIR}${SHORTPREFIX}/var/lib/packages/$PKGNAME.head
-    echo "Version=${PKGVERSION} " >> ${PKGDIR}${SHORTPREFIX}/var/lib/packages/$PKGNAME.head
-    echo "Build=${PKGBUILD}" >> ${PKGDIR}${SHORTPREFIX}/var/lib/packages/$PKGNAME.head
-    echo "ARCH=${ABI}" >> ${PKGDIR}${SHORTPREFIX}/var/lib/packages/$PKGNAME.head
-    echo "$PKGNAME:conflict:" > ${PKGDIR}${SHORTPREFIX}/var/lib/packages/$PKGNAME.conflict
-    echo "$PKGNAME:suggest:" > ${PKGDIR}${SHORTPREFIX}/var/lib/packages/$PKGNAME.suggest
+    mkdir -p ${PKGDIR}${SHORTPREFIX}/var/lib/packages/${ABI}
+    echo "Pkgname=$PKGNAME" > ${PKGDIR}${SHORTPREFIX}/var/lib/packages/${ABI}/$PKGNAME.head
+    echo "Version=${PKGVERSION} " >> ${PKGDIR}${SHORTPREFIX}/var/lib/packages/${ABI}/$PKGNAME.head
+    echo "Build=${PKGBUILD}" >> ${PKGDIR}${SHORTPREFIX}/var/lib/packages/${ABI}/$PKGNAME.head
+    echo "ARCH=${ABI}" >> ${PKGDIR}${SHORTPREFIX}/var/lib/packages/${ABI}/$PKGNAME.head
+    echo "$PKGNAME:conflict:" > ${PKGDIR}${SHORTPREFIX}/var/lib/packages/${ABI}/$PKGNAME.conflict
+    echo "$PKGNAME:suggest:" > ${PKGDIR}${SHORTPREFIX}/var/lib/packages/${ABI}/$PKGNAME.suggest
+    echo "" > ${PKGDIR}${SHORTPREFIX}/var/lib/packages/${ABI}/$PKGNAME.desc
 }
 
 function pkgstrip()
@@ -69,8 +71,9 @@ function pkgstrip()
 function filelist()
 {
 
-    cd $PKGDIR
-    $CWD/bin/filelist $PKGDIR > ${PKGDIR}${SHORTPREFIX}/var/lib/packages/$PKGNAME.files
+    mkdir -p ${PKGDIR}${SHORTPREFIX}/var/lib/packages/${ABI}
+    cd ${PKGDIR}
+    $CWD/bin/filelist $PKGDIR > ${PKGDIR}${SHORTPREFIX}/var/lib/packages/${ABI}/$PKGNAME.files
 }
 
 function copytoroot()
@@ -80,9 +83,10 @@ function copytoroot()
 
 function deps()
 {
+    mkdir -p ${PKGDIR}${SHORTPREFIX}/var/lib/packages/${ABI}
     OLDLD_LIBRARY_PATH=$LD_LIBRARY_PATH
     export LD_LIBRARY_PATH=${ROOT}${PREFIX}/lib:$TOOLCHAIN/sysroot/usr/lib/$TARGET/$API
-    $CWD/bin/bindeps $PKGDIR ${ROOT}${SHORTPREFIX} > ${PKGDIR}${SHORTPREFIX}/var/lib/packages/$PKGNAME.deps
+    $CWD/bin/bindeps $PKGDIR ${ROOT}${SHORTPREFIX} > ${PKGDIR}${SHORTPREFIX}/var/lib/packages/${ABI}/$PKGNAME.deps
     export LD_LIBRARY_PATH=$OLDLD_LIBRARY_PATH
 }
 

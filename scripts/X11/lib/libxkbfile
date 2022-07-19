@@ -1,0 +1,8 @@
+clear_flags
+
+export CFLAGS="$CFLAGS -fPIC -D_X_NONSTRING=''"
+cd $CWD/$SOURCE
+./configure --prefix=$PREFIX --host=$TARGETX11
+make clean || true
+make -j $NUMJOB
+

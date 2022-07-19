@@ -34,7 +34,7 @@ do
     [ -z "$lib" ] && continue
     lib=$(echo $lib | sed 's/\/\//\//g')
     cleanlib=$(echo ${lib/$ROOT//} | sed 's/\/\//\//g')
-    grep "$cleanlib" $ROOT/var/lib/packages/* | while read str
+    grep "$cleanlib" $ROOT/var/lib/packages/${ABI}/* | while read str
     do
         echo $str | awk -F ':' '{print $1}' >> /tmp/bindeps.pkgraw
     done

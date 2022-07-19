@@ -1,0 +1,7 @@
+if [ ! -z "${X11UTIL}" ]
+then
+    echo "Building x11-util ..." >> $LOG
+
+    SOURCE=sources/X11/util/util-macros-1.19.3
+    . $CWD/scripts/X11/util/util-macros; package_make util-macros 1.19.3 tw1
+fi

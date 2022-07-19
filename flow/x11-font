@@ -1,0 +1,7 @@
+if [ ! -z "${X11FONT}" ]
+then
+    echo "Building x11-font ..." >> $LOG
+
+    SOURCE=sources/X11/font/font-util-1.3.3
+    . $CWD/scripts/X11/font/font-util; package_make font-util 1.3.3 tw1
+fi

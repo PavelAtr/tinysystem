@@ -1,0 +1,6 @@
+if [ ! -z "${LIBVA}" ]
+then
+    SOURCE=sources/libva-2.10.0
+    echo "Building $SOURCE ..." >> $LOG
+    . $CWD/scripts/libva; package_meson libva 2.10.0 tw1
+fi

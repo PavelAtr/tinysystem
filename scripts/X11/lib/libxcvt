@@ -1,0 +1,11 @@
+clear_flags
+
+#export LD_LIBRARY_PATH=${ROOT}/${PREFIX}/lib
+cd $CWD/$SOURCE
+rm -r _build || true
+meson --prefix=$PREFIX \
+--cross-file $CWD/scripts/meson_cross/$ABI.cfg \
+_build  .
+ninja -C _build
+
+#unset LD_LIBRARY_PATH

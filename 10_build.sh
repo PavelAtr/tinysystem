@@ -62,7 +62,11 @@ mkdir -p ${STATICROOT}${PREFIX}
 . $CWD/flow/libmd
 . $CWD/flow/libbsd
 . $CWD/flow/android-videolibs
-. $CWD/flow/X11stub
+. $CWD/flow/x11-proto
+. $CWD/flow/x11-util
+. $CWD/flow/x11-lib
+. $CWD/flow/x11-font
+
 . $CWD/flow/xcb-proto
 . $CWD/flow/libxau
 . $CWD/flow/xorg-macros
@@ -74,6 +78,7 @@ mkdir -p ${STATICROOT}${PREFIX}
 . $CWD/flow/libxfixes
 . $CWD/flow/libxi
 . $CWD/flow/libxtst
+
 . $CWD/flow/libxkbcommon
 . $CWD/flow/wayland
 . $CWD/flow/wayland-protocols
@@ -129,8 +134,10 @@ mkdir -p ${STATICROOT}${PREFIX}
 . $CWD/flow/libinput
 . $CWD/flow/lcms2
 . $CWD/flow/libxcursor
-
+. $CWD/flow/mesa
+. $CWD/flow/libva
 . $CWD/flow/weston
+. $CWD/flow/xwayland
 
 ##. $CWD/scripts/libogg;			package_make libogg
 ##. $CWD/scripts/lame;			package_make lame

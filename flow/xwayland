@@ -1,0 +1,6 @@
+if [ ! -z "${XWAYLAND}" ]
+then
+    SOURCE=sources/X11/xserver/xwayland-22.1.2
+    echo "Building $SOURCE ..." >> $LOG
+    . $CWD/scripts/X11/xserver/xwayland; package_meson xwayland xwayland 22.1.2 tw1
+fi

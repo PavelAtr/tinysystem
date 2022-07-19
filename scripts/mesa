@@ -1,0 +1,27 @@
+clear_flags
+
+export LD_LIBRARY_PATH=${ROOT}/${PREFIX}/lib
+export CFLAGS="$CFLAGS -include bthread.h"
+export CXXFLAGS=$CFLAGS
+export LDFLAGS="$LDFLAGS -lbthread"
+cd $CWD/$SOURCE
+rm -r _build || true
+meson --prefix=$PREFIX \
+--cross-file $CWD/scripts/meson_cross/$ABI.cfg \
+-Dplatforms=x11,wayland \
+-Dgbm=enabled \
+-Ddri3=enabled \
+-Degl=disabled \
+-Dgles1=enabled \
+-Dgles2=disabled \
+-Dgallium-drivers=lima \
+-Dvulkan-drivers=freedreno,panfrost \
+-Dfreedreno-kgsl=true \
+_build  .
+ninja -C _build
+
+unset LD_LIBRARY_PATH
+
+#-Dplatform-sdk-version=$API \
+#-Dandroid-stub=true \
+#-Dplatforms=android \

@@ -11,13 +11,13 @@ meson --prefix=$PREFIX \
 --cross-file $CWD/scripts/meson_cross/$ABI.cfg \
 -Dsystemd=false \
 -Dlauncher-logind=false \
--Dbackend-drm=false \
+-Dbackend-drm=true \
 -Dbackend-default=wayland \
 -Dbackend-rdp=false \
 -Dcolor-management-colord=false \
 -Dremoting=false \
 -Dpipewire=false \
--Dsimple-clients=[] \
+-Dsimple-clients= \
 -Dxwayland=true \
 _build  .
 ninja -C _build
