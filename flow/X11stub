@@ -1,6 +1,0 @@
-if [ ! -z "${X11STUB}" ]
-then
-    SOURCE=sources/X11stub
-    echo "Building $SOURCE ..." >> $LOG
-    . $CWD/scripts/X11stub; package_make X11stub deb11 tw1
-fi
