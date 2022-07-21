@@ -1,0 +1,10 @@
+clear_flags
+
+cd $CWD/$SOURCE
+
+export LDFLAGS="$LDFLAGS -lrpl"
+make clean || true
+./configure --prefix=$PREFIX --host=$TARGET \
+--x-includes=${ROOT}/${PREFIX}/include/X11
+make -j $NUMJOB
+

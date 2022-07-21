@@ -22,7 +22,4 @@ meson --prefix=$PREFIX \
 _build  .
 ninja -C _build
 
-#-Drenderer-gl=false \
-#-Dbackend-drm-screencast-vaapi=false \
-
 unset LD_LIBRARY_PATH

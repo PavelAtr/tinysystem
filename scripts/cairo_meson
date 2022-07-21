@@ -10,4 +10,4 @@ meson --prefix=$PREFIX \
 -Ddrm=enabled \
 -Dtests=disabled \
 _build  .
-#ninja -C _build
+ninja -C _build

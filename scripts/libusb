@@ -1,8 +1,7 @@
 clear_flags
 
 cd $CWD/$SOURCE
-./autogen.sh
-./configure --prefix=$PREFIX --target=$TARGET
 make clean || true
+./configure --prefix=$PREFIX --host=$TARGET
 make -j $NUMJOB
 

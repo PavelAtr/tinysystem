@@ -21,7 +21,3 @@ _build  .
 ninja -C _build
 
 unset LD_LIBRARY_PATH
-
-#-Dplatform-sdk-version=$API \
-#-Dandroid-stub=true \
-#-Dplatforms=android \

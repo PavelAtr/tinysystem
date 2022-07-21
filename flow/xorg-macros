@@ -1,6 +1,0 @@
-if [ ! -z "${XORGMACROS}" ]
-then
-    SOURCE=sources/xorg-macros
-    echo "Building $SOURCE ..." >> $LOG
-    . $CWD/scripts/xorg-macros; package_make xorg-macros 7.7 tw1
-fi

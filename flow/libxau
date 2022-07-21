@@ -1,6 +1,0 @@
-if [ ! -z "${LIBXAU}" ]
-then
-    SOURCE=sources/libxau-1.0.9
-    echo "Building $SOURCE ..." >> $LOG
-    . $CWD/scripts/libxau; package_make libxau 1.0.9 tw1
-fi

@@ -1,0 +1,10 @@
+clear_flags
+
+export CFLAGS="$CFLAGS -D_X_NONSTRING='' -fPIC"
+cd $CWD/$SOURCE
+make clean || true
+./configure --prefix=$PREFIX --host=$TARGET \
+--x-includes=${ROOT}/${PREFIX}/include/X11 \
+--enable-introspection=no
+make -j $NUMJOB
+

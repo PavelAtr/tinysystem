@@ -1,0 +1,53 @@
+if [ ! -z "${XFCE}" ]
+then
+    echo "Building XFCE ..." >> $LOG
+
+    SOURCE=sources/XFCE/libxfce4util-4.16.0
+    . $CWD/scripts/XFCE/libxfce4util; package_make libxfce4util 4.16.0 tw1
+
+    SOURCE=sources/XFCE/xfconf-4.16.0
+    . $CWD/scripts/XFCE/xfconf; package_make xfconf 4.16.0 tw1
+
+    SOURCE=sources/XFCE/libxfce4ui-4.16.0
+    . $CWD/scripts/XFCE/libxfce4ui; package_make libxfce4ui 4.16.0 tw1
+
+    SOURCE=sources/XFCE/garcon-0.8.0
+    . $CWD/scripts/XFCE/garcon; package_make garcon 0.8.0 tw1
+
+    SOURCE=sources/XFCE/exo-4.16.0
+    . $CWD/scripts/XFCE/exo; package_make exo 4.16.0 tw1
+
+    SOURCE=sources/XFCE/thunar-4.16.0
+    . $CWD/scripts/XFCE/thunar; package_make thunar 4.16.0 tw1
+
+    SOURCE=sources/XFCE/thunar-volman-4.16.0
+    . $CWD/scripts/XFCE/thunar-volman; package_make thunar-volman 4.16.0 tw1
+
+    SOURCE=sources/XFCE/tumbler-4.16.0
+    . $CWD/scripts/XFCE/tumbler; package_make tumbler 4.16.0 tw1
+
+    SOURCE=sources/XFCE/xfce4-appfinder-4.16.0
+    . $CWD/scripts/XFCE/xfce4-appfinder; package_make xfce4-appfinder 4.16.0 tw1
+
+    SOURCE=sources/XFCE/xfce4-dev-tools-4.16.0
+    . $CWD/scripts/XFCE/xfce4-dev-tools; package_make xfce4-dev-tools 4.16.0 tw1
+
+    SOURCE=sources/XFCE/xfce4-panel-4.16.0
+    . $CWD/scripts/XFCE/xfce4-panel; package_make xfce4-panel 4.16.0 tw1
+
+    SOURCE=sources/XFCE/xfce4-power-manager-4.16.0
+    . $CWD/scripts/XFCE/xfce4-power-manager; package_make xfce4-power-manager 4.16.0 tw1
+
+    SOURCE=sources/XFCE/xfce4-session-4.16.0
+    . $CWD/scripts/XFCE/xfce4-session; package_make xfce4-session 4.16.0 tw1
+
+    SOURCE=sources/XFCE/xfce4-settings-4.16.0
+    . $CWD/scripts/XFCE/xfce4-settings; package_make xfce4-settings 4.16.0 tw1
+
+    SOURCE=sources/XFCE/xfdesktop-4.16.0
+    . $CWD/scripts/XFCE/xfdesktop; package_make xfdesktop 4.16.0 tw1
+
+    SOURCE=sources/XFCE/xfwm4-4.16.0
+    . $CWD/scripts/XFCE/xfwm4; package_make xfwm4 4.16.0 tw1
+
+fi

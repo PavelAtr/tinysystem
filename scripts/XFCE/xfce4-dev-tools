@@ -1,0 +1,9 @@
+clear_flags
+
+export LD_LIBRARY_PATH=${ROOT}/${PREFIX}/lib
+cd $CWD/$SOURCE
+make clean || true
+./configure --prefix=$PREFIX --host=$TARGET
+make V=1 -j $NUMJOB
+
+unset LD_LIBRARY_PATH

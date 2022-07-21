@@ -1,6 +1,0 @@
-if [ ! -z "${LIBXTST}" ]
-then
-    SOURCE=sources/libxtst-1.2.3
-    echo "Building $SOURCE ..." >> $LOG
-    . $CWD/scripts/libxtst; package_make libxtst 1.2.3 tw1
-fi

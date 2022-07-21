@@ -1,6 +1,0 @@
-if [ ! -z "${LIBXEXT}" ]
-then
-    SOURCE=sources/libxext-1.3.3
-    echo "Building $SOURCE ..." >> $LOG
-    . $CWD/scripts/libxext; package_make libxext 1.3.3 tw1
-fi

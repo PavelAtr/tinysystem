@@ -1,6 +1,0 @@
-if [ ! -z "${LIBXCURSOR}" ]
-then
-    SOURCE=sources/libxcursor-1.2.0
-    echo "Building $SOURCE ..." >> $LOG
-    . $CWD/scripts/libxcursor; package_make libxcursor 1.2.0 tw1
-fi

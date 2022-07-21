@@ -1,0 +1,6 @@
+if [ ! -z "${LIBNOTIFY}" ]
+then
+    SOURCE=sources/libnotify-0.7.9
+    echo "Building $SOURCE ..." >> $LOG
+    . $CWD/scripts/libnotify; package_meson libnotify 0.7.9 tw1
+fi

@@ -1,0 +1,6 @@
+if [ ! -z "${LIBUSB}" ]
+then
+    SOURCE=sources/libusb-1.0-1.0.24
+    echo "Building $SOURCE ..." >> $LOG
+    . $CWD/scripts/libusb; package_make libusb 1.0-1.0.24 tw1
+fi

@@ -66,19 +66,6 @@ mkdir -p ${STATICROOT}${PREFIX}
 . $CWD/flow/x11-util
 . $CWD/flow/x11-lib
 . $CWD/flow/x11-font
-
-. $CWD/flow/xcb-proto
-. $CWD/flow/libxau
-. $CWD/flow/xorg-macros
-. $CWD/flow/libxcb
-. $CWD/flow/libx11
-. $CWD/flow/libxext
-. $CWD/flow/libxinerama
-. $CWD/flow/libxrender
-. $CWD/flow/libxfixes
-. $CWD/flow/libxi
-. $CWD/flow/libxtst
-
 . $CWD/flow/libxkbcommon
 . $CWD/flow/wayland
 . $CWD/flow/wayland-protocols
@@ -133,11 +120,15 @@ mkdir -p ${STATICROOT}${PREFIX}
 . $CWD/flow/check
 . $CWD/flow/libinput
 . $CWD/flow/lcms2
-. $CWD/flow/libxcursor
 . $CWD/flow/mesa
 . $CWD/flow/libva
 . $CWD/flow/weston
 . $CWD/flow/xwayland
+. $CWD/flow/libwnck3
+. $CWD/flow/libnotify
+. $CWD/flow/libusb
+. $CWD/flow/upower
+. $CWD/flow/xfce
 
 ##. $CWD/scripts/libogg;			package_make libogg
 ##. $CWD/scripts/lame;			package_make lame
@@ -171,7 +162,7 @@ mkdir -p ${STATICROOT}${PREFIX}
 ##. $CWD/scripts/libxfce4util;		package_make libxfce4util
 ##. $CWD/scripts/xfconf;			package_make xfconf
 ##. $CWD/scripts/libxfce4ui;		package_make libxfce4ui
-##. $CWD/scripts/libwnck3;		package_meson libwnck3
+
 ##. $CWD/scripts/xfwm4;			package_make xfwm4
 ##. $CWD/scripts/pulseaudio;		package_make pulseaudio
 ##. $CWD/scripts/lv2;			package_make lv2

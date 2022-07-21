@@ -1,0 +1,8 @@
+clear_flags
+
+cd $CWD/$SOURCE
+make clean || true
+./configure --prefix=$PREFIX --host=$TARGET \
+--x-includes=${ROOT}/${PREFIX}/include/X11 
+make -j $NUMJOB
+

@@ -1,9 +1,9 @@
 clear_flags
 
 cd $CWD/$SOURCE
+make clean || true
 ./configure --prefix=$PREFIX --host=$TARGET \
 --enable-introspection=no \
---disable-umockdev
-make clean || true
+--x-includes=${ROOT}/${PREFIX}/include/X11 \
+--oldincludedir=/tmp
 make -j $NUMJOB
-

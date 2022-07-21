@@ -1,6 +1,0 @@
-if [ ! -z "${LIBXINERAMA}" ]
-then
-    SOURCE=sources/libxinerama-1.1.4
-    echo "Building $SOURCE ..." >> $LOG
-    . $CWD/scripts/libxinerama; package_make libxinerama 1.1.4 tw1
-fi

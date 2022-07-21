@@ -1,6 +1,0 @@
-if [ ! -z "${XCBPROTO}" ]
-then
-    SOURCE=sources/xcb-proto-1.14.1
-    echo "Building $SOURCE ..." >> $LOG
-    . $CWD/scripts/xcb-proto; package_make xcb-proto 1.14.1 tw1
-fi

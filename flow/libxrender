@@ -1,6 +1,0 @@
-if [ ! -z "${LIBXRENDER}" ]
-then
-    SOURCE=sources/libxrender-0.9.10
-    echo "Building $SOURCE ..." >> $LOG
-    . $CWD/scripts/libxrender; package_make libxrender 0.9.10 tw1
-fi

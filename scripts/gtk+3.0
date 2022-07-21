@@ -1,9 +1,5 @@
 clear_flags
 
-#export CFLAGS="$CFLAGS -include ashm.h"
-#export CXXFLAGS=$CFLAGS
-#export LDFLAGS="$LDFLAGS -landroid-shm"
-
 cd $CWD/$SOURCE
 
 make clean || true

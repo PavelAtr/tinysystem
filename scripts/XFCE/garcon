@@ -2,8 +2,7 @@ clear_flags
 
 cd $CWD/$SOURCE
 ./configure --prefix=$PREFIX --host=$TARGET \
---enable-introspection=no \
---disable-umockdev
+--enable-introspection=no
 make clean || true
 make -j $NUMJOB
 

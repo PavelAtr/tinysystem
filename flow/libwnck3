@@ -1,0 +1,6 @@
+if [ ! -z "${LIBWNCK3}" ]
+then
+    SOURCE=sources/libwnck3-3.36.0
+    echo "Building $SOURCE ..." >> $LOG
+    . $CWD/scripts/libwnck3; package_meson libwnck3 3.36.0 tw1
+fi
